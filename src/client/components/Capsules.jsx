@@ -28,12 +28,15 @@ export default function Capsules({BASE_URL}){
       <h1>Dragon lair</h1>
       {
         allCapsules.map((missions, index)=>{
-          return(
-            <div key={index}>
-              <h1>{missions.mission.name}</h1>
-              <img src={missions.image} />
-            </div>
-          )
+          if (missions.pad.name === 'Space Launch Complex 4E'){
+            return(
+              <div key={index}>
+                <h1>{missions.mission.name}</h1>
+                <img src={missions.image} />
+              </div>
+            )
+          }
+
         })
       }
     </>
