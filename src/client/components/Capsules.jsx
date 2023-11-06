@@ -13,8 +13,8 @@ export default function Capsules({BASE_URL}){
 
       const response = await fetch(CAPSULES_URL)
       const result = await response.json()
-      console.log(result)
-      setAllCapsules(result)
+      console.log(result.results)
+      setAllCapsules(result.results)
 
     }catch(err){
       console.log('Error fetching all dragon capsules')
@@ -26,15 +26,16 @@ export default function Capsules({BASE_URL}){
   return(
     <>
       <h1>Dragon lair</h1>
-      {/* {
-        allCapsules.map((capsule, index)=>{
+      {
+        allCapsules.map((missions, index)=>{
           return(
             <div key={index}>
-              <h1>{}</h1>
+              <h1>{missions.mission.name}</h1>
+              <img src={missions.image} />
             </div>
           )
         })
-      } */}
+      }
     </>
   )
 }
