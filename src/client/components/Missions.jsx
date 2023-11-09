@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import './DataTiles.css'
 
 export default function Missions(){
 
@@ -30,9 +31,10 @@ export default function Missions(){
       {
         allVandyLaunchData.map((mission, index)=>{
           return(
-            <div key={index}>
+            <div key={index} className="missionTile">
               <h1>{mission.mission.name}</h1>
               <h2>{mission.rocket.configuration.full_name}</h2>
+              <h2>{mission.mission.description}</h2>
               <img src={mission.image}></img>
             </div>
           )
