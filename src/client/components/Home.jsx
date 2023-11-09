@@ -1,10 +1,10 @@
-import { fetchAllVandyFalconData } from '../dataHandler.js'
+import { fetchAllVandyLaunchData } from '../dataHandler.js'
 
 export default function Home(){
   return(
     <>
       <h1>Home</h1>
-      <button onClick={()=>{fetchAllVandyFalconData()}}>Hello</button>
+      <button onClick={()=>{fetchAllVandyLaunchData()}}>Fetch data, save to local storage</button>
     </>
   )
 }

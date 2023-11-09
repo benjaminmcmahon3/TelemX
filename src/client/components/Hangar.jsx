@@ -1,46 +1,54 @@
 import { useEffect, useState } from "react"
+import Boosters from "./Boosters"
+import Fairings from "./Fairings"
 
 export default function Hangar({BASE_URL}){
 
-  const [ allMissions, setAllMissions ] = useState([])
-  const [ allBoosters, setAllBoosters ] = useState([])
-  const [ allFairings, setAllFairings ] = useState([])
-  const [ allPayloads, setAllPayloads ] = useState([])
+  const [ boostersVisible, setBoostersVisible ] = useState(false)
+  const [ fairingsVisible, setFairingsVisible ] = useState(false)
+
+  const [ allVandyFalconData, setAllVandyFalconData ] = useState([])
+  const [ allVandyBoosterData, setAllVandyBoosterData ] = useState([])
+  const [ allVandyFairingData, setAllVandyFairingData ] = useState([])
+
+  const handleStorageUpdate = () => {
+    const dataToStore = JSON.parse(localStorage.getItem('vandyLaunchData'))
+    setAllVandyFalconData(dataToStore)
+  }
 
   useEffect(()=>{
-    async function getAllMissions(){
+    async function setStoredVandyFalconData(){
       try{
+        window.addEventListener('vandyLaunchDataUpdated', handleStorageUpdate)
+        handleStorageUpdate()
 
-        const response = await fetch(BASE_URL)
-        const result = await response.json()
-        console.log('First page: ', result)
-        getNextPage(result.next)
-
+        return()=>{
+          window.removeEventListener('vandyLaunchDataUpdated', handleStorageUpdate)
+        }
       }catch(err){
         console.log('Error')
       }
     }
-    getAllMissions()
+    setStoredVandyFalconData()
   },[])
-
-  async function getNextPage(NEXT_URL){
-    try{
-
-      const response = await fetch(NEXT_URL)
-      const result = await response.json()
-      console.log('Next page: ', result)
-
-    }catch(err){
-
-    }
-  }
 
   return(
     <>
       <h1>Hangar</h1>
-      {
+      <h3>View vehicle info</h3>
+      <button onClick={()=>{
+        setBoostersVisible(!boostersVisible)
+        setAllVandyBoosterData(allVandyFalconData.map((mission)=>{return(mission.rocket)}))
+        }}>View Boosters</button>
 
-      }
+      <button onClick={()=>{
+        setFairingsVisible(!fairingsVisible)
+        setAllVandyFairingData(allVandyFairingData.map((mission)=>{return(mission.rocket)}))
+        }}>View Fairings</button>
+
+      {boostersVisible && <Boosters allVandyBoosterData={allVandyBoosterData} />}
+      {fairingsVisible && <Fairings allVandyFairingData={allVandyFalconData} />}
+
     </>
   )
 }

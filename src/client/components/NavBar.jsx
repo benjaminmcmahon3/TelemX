@@ -6,6 +6,7 @@ export default function NavBar(){
       <Link to='/'>Home</Link>
       <Link to='/hangar'>Hangar</Link>
       <Link to='/pad'>Pad</Link>
+      <Link to='/cleanroom'>Cleanroom</Link>
     </>
   )
 }
