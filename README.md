@@ -6,6 +6,9 @@ All credit for the incredibly data rich and well maintained Launch Library API g
 Server folder and its children are currently defunct, and not needed for designed MVP. Site is only desgined to pull pre-existing data from an externally managed API. However, these files will be temporarily kept in the repo for learning purposes and potential expansion in the future.
 !!!
 
+Pad - View past, live, and future launches for the chosen launch site
+Hangar - View vehicles and/or payloads
+
 API
   Launch Library 2 - https://thespacedevs.com/llapi
   Rate limited API (15/hour)

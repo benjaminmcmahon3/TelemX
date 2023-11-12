@@ -1,10 +1,8 @@
 import {Routes, Route} from 'react-router-dom'
-import Home from './components/Home'
-import NavBar from './components/NavBar'
+import Earth from './components/Earth'
 import Pad from './components/Pad'
-import Hangar from './components/Hangar'
+import NavBar from './components/NavBar'
 import './App.css'
-import Cleanroom from './components/Cleanroom'
 
 function App() {
 
@@ -12,18 +10,8 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={<Home 
-
-          />} />
-        <Route path='/hangar' element={<Hangar 
-
-          />} />
-        <Route path='/pad' element={<Pad 
-
-          />} />
-        <Route path='/cleanroom' element={<Cleanroom 
-
-        />} />
+        <Route path='/' element={<Earth />} />
+        <Route path='/:launchSite' element={<Pad />} />
       </Routes>
     </>
   )
