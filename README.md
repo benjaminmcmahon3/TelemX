@@ -2,8 +2,11 @@
 TelemX is a visual interface and dashboard to view past and future SpaceX launch data from pad locations. It is a Javascript, HTML, CSS, and React project designed to showcase API interfacing and UI/UX experience
 #### Earth
   * Home page allowing the user to browse and select a launch site
-#### Hangar
+#### Upcoming Implementations
+* Hangar
   * Page for user to browse detailed vehicle information
+* Fetch and store larger sums of API data
+  * Helps alleviate requests/hour limit of main API
 
 ## Project 
   * [GitHub](https://github.com/benjaminmcmahon3/TelemX)
