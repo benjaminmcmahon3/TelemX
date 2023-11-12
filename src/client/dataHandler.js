@@ -1,6 +1,5 @@
 // lsp_id=121 filters to only show SpaceX contracts
 // limit=5 sets returned query results to 5
-// lsp_id=121
   const baseUrl = `https://lldev.thespacedevs.com/2.2.0/`
   const defualtQuery = `launch/?limit=5&`
   
