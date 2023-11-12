@@ -2,7 +2,7 @@ const BASE_URL = `https://lldev.thespacedevs.com/2.2.0/`
 
 export const fetchAllVandyLaunchData = async ()=>{
   try{
-    let url = BASE_URL + 'launch/?pad=16&search=SpaceX'
+    let url = BASE_URL + 'launch/?pad=16&search=SpaceX&mode=detailed'
     let outgoingData = []
     while (url){
       console.log('Fetching data from: ', url)

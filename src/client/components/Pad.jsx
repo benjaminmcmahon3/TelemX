@@ -1,19 +1,15 @@
-import { useState } from "react"
-import Missions from "./Missions"
+import { useParams } from "react-router-dom"
+import LaunchTiles from "./LaunchTiles"
+import { useEffect, useState } from "react"
 
 export default function Pad(){
 
-  const [ missionsVisible, setMissionsVisible ] = useState(false)
+  let launchSite = useParams()
+  console.log(launchSite)
 
   return(
     <>
-      <h1>Pad</h1>
-      <h3>View upcoming and past launch info</h3>
-      <button onClick={()=>{
-        setMissionsVisible(!missionsVisible)
-        }}>View Missions</button>
-
-      {missionsVisible && <Missions />}
+      <LaunchTiles launchSite={launchSite}/>
     </>
   )
 }
