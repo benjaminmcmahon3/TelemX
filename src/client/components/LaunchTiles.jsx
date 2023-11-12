@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react"
 import './DataTiles.css'
-import { useParams } from "react-router-dom"
 import { fetchFutureLaunches, fetchPastLaunches } from "../dataHandler"
-
-// make detailed mode filter seperate from inital fetch, fetch only THAT one launch detail after clicking a "more info" button "mode=detailed"
-
-// see below for date format (please confirm format is correct, this was a bit brute forced)
-//  'https://lldev.thespacedevs.com/2.2.0/launch/?net__lte=2022-12-16T11%3A46%3A47Z'
 
 export default function LaunchTiles({launchSite}){
 
@@ -43,33 +37,41 @@ export default function LaunchTiles({launchSite}){
   return(
     <>
       <h1>Hello from {launchSite.launchSite}</h1>
-     {console.log('Future data', futureData)}
-     {console.log('Past data', pastData)}
+      <div className="missionTileContainer">
+        <div className="pastColumn">
+          <h3>Previous Launches</h3>
+          {
+            pastData.map((mission, index)=>{
+              return(
+                <div key={index} className="missionTile">
+                  <h1>{mission.mission.name}</h1>
+                  <h2>{mission.rocket.configuration.full_name}</h2>
+                  {/* <h2>{mission.mission.description}</h2> */}
+                  <img src={mission.image}></img>
+                </div>
+              )
+            })
+          }
+        </div>
+        <div className="futureColumn">
+          <h3>Upcoming Launches</h3>
+          {
+            futureData.map((mission, index)=>{
+              return(
+                <div key={index} className="missionTile">
+                  <h1>{mission.mission.name}</h1>
+                  <h2>{mission.rocket.configuration.full_name}</h2>
+                  {/* <h2>{mission.mission.description}</h2> */}
+                  <img src={mission.image}></img>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+      
 
-      {
-        futureData.map((mission, index)=>{
-          return(
-            <div key={index} className="missionTile">
-              <h1>{mission.mission.name}</h1>
-              <h2>{mission.rocket.configuration.full_name}</h2>
-              <h2>{mission.mission.description}</h2>
-              <img src={mission.image}></img>
-            </div>
-          )
-        })
-      }
-      {
-        pastData.map((mission, index)=>{
-          return(
-            <div key={index} className="missionTile">
-              <h1>{mission.mission.name}</h1>
-              <h2>{mission.rocket.configuration.full_name}</h2>
-              <h2>{mission.mission.description}</h2>
-              <img src={mission.image}></img>
-            </div>
-          )
-        })
-      }
+
     </>
   )
 }
