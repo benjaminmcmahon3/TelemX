@@ -4,12 +4,15 @@ import { useEffect, useState } from "react"
 
 export default function Pad(){
 
-  let launchSite = useParams()
-  console.log(launchSite)
+  let launchSitePerParams = useParams()
+
+  useEffect(()=>{
+    console.log(launchSitePerParams)
+  },[launchSitePerParams])
 
   return(
     <>
-      <LaunchTiles launchSite={launchSite}/>
+      <LaunchTiles launchSite={launchSitePerParams} />
     </>
   )
 }

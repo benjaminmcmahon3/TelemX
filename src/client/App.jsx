@@ -4,17 +4,13 @@ import Pad from './components/Pad'
 import NavBar from './components/NavBar'
 import './App.css'
 
-const baseUrl = 'https://lldev.thespacedevs.com/2.2.0/'
-
 function App() {
 
   return (
     <>
       <NavBar />
       <Routes>
-        <Route path='/' element={<Earth 
-          baseUrl = {baseUrl}
-          />} />
+        <Route path='/' element={<Earth />} />
         <Route path='/:launchSite' element={<Pad />} />
       </Routes>
     </>

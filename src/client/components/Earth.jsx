@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { fetchAllVandyLaunchData } from '../dataHandler.js'
 
 export default function Earth(){
 
