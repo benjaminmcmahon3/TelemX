@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import './DataTiles.css'
-import { fetchFutureLaunches, fetchPastLaunches } from "../dataHandler"
+import { fetchFutureLaunches, fetchPastLaunches, convertDateFromIso } from "../dataHandler"
 
 export default function LaunchTiles({launchSite}){
 
@@ -36,7 +36,6 @@ export default function LaunchTiles({launchSite}){
 
   return(
     <>
-      <h1>Hello from {launchSite.launchSite}</h1>
       <div className="missionTileContainer">
         <div className="pastColumn">
           <h3>Previous Launches</h3>
@@ -44,9 +43,10 @@ export default function LaunchTiles({launchSite}){
             pastData.map((mission, index)=>{
               return(
                 <div key={index} className="missionTile">
-                  <h1>{mission.mission.name}</h1>
-                  <h2>{mission.rocket.configuration.full_name}</h2>
-                  {/* <h2>{mission.mission.description}</h2> */}
+                  <h1>{mission.name}</h1>
+                  <h2>{
+                    convertDateFromIso(mission.net)
+                  }</h2>
                   <img src={mission.image}></img>
                 </div>
               )
@@ -59,9 +59,10 @@ export default function LaunchTiles({launchSite}){
             futureData.map((mission, index)=>{
               return(
                 <div key={index} className="missionTile">
-                  <h1>{mission.mission.name}</h1>
-                  <h2>{mission.rocket.configuration.full_name}</h2>
-                  {/* <h2>{mission.mission.description}</h2> */}
+                  <h1>{mission.name}</h1>
+                  <h2>{
+                    convertDateFromIso(mission.net)
+                  }</h2>
                   <img src={mission.image}></img>
                 </div>
               )

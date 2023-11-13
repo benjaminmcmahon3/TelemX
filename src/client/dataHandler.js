@@ -1,7 +1,7 @@
 // lsp_id=121 filters to only show SpaceX contracts
 // limit=5 sets returned query results to 5
   const baseUrl = `https://lldev.thespacedevs.com/2.2.0/`
-  const defualtQuery = `launch/?limit=5&`
+  const defualtQuery = `launch/?limit=10&lsp__id=121&`
   
   function getConvertCurrentDate(){
     let date = new Date()
@@ -10,15 +10,12 @@
   
   export async function fetchFutureLaunches(locationId){
     try{
-      let gte = getConvertCurrentDate()
-      console.log(`Fetching future launch data after ${gte}, from location ${locationId}`)
-  
-      let fetchQuery = `pad__location=${locationId}&net__gte=${gte}&ordering=net`
+      let isoDate = getConvertCurrentDate()
+      let fetchQuery = `pad__location=${locationId}&net__gte=${isoDate}&ordering=net`
       const response = await fetch(baseUrl + defualtQuery + fetchQuery)
       const result = await response.json()
       console.log('Future results from dataHandler: ', result)
       return (result.results)
-  
     }catch(err){
       console.log(`Error fetching future launch from ${launchSite}`)
     }
@@ -26,16 +23,26 @@
   
   export async function fetchPastLaunches(locationId){
     try{
-      let lte = getConvertCurrentDate()
-      console.log(`Fetching past launch data before ${lte}, from location ${locationId}`)
-  
-      let fetchQuery = `pad__location=${locationId}&net__lte=${lte}&ordering=-net`
+      let isoDate = getConvertCurrentDate()
+      let fetchQuery = `pad__location=${locationId}&net__lte=${isoDate}&ordering=-net`
       const response = await fetch(baseUrl + defualtQuery + fetchQuery)
       const result = await response.json()
       console.log('Past results from dataHandler: ', result)
       return (result.results)
-  
     }catch(err){
       console.log(`Error fetch past launch data from ${launchSite}`, err)
     }
+  }
+
+  export function convertDateFromIso(isoDate){
+    let d = isoDate.split(/\D+/);
+    let unformattedDate = new Date(Date.UTC(d[0], --d[1], d[2], d [3], d[4], d[5], d[6]))
+    return (unformattedDate.toLocaleDateString('en-US', { 
+      year: 'numeric',
+      month: 'long', 
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    }))
   }
