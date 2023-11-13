@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react"
 import './DataTiles.css'
-import { fetchFutureLaunches, fetchPastLaunches, convertDateFromIso } from "../dataHandler"
-import { useNavigate } from "react-router-dom"
+import { fetchFutureLaunches, fetchPastLaunches } from "../dataHandler"
+
 import LoadingContext from "../LoadingContext"
+import LaunchThumnail from "./LaunchThumbnail"
 
 export default function LaunchTiles({launchSite}){
 
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
   const [ futureData, setFutureData ] = useState(null);
   const [ pastData, setPastData ] = useState(null);
-  const navigate = useNavigate();
+
 
   useEffect(()=>{
     startLoading();
@@ -46,51 +47,20 @@ export default function LaunchTiles({launchSite}){
 
   return(
     <>
-      <div className="missionTileContainer">
-        <div className="pastColumn">
-          <h3>Previous Launches</h3>
-          <button>View all</button>
-          {
-            pastData.map((mission, index)=>{
-              return(
-                <div key={index} className="missionTile">
-                  <h1>{mission.name}</h1>
-                  <h2>{
-                    convertDateFromIso(mission.net)
-                  }</h2>
-                  <button onClick={()=>{
-                    navigate(`/launches/${mission.id}`)
-                  }}>More Info</button>
-                  <img src={mission.image}></img>
-                </div>
-              )
-            })
-          }
+      {!isLoading &&
+        <div className="missionTileContainer">
+          <div className="pastColumn">
+            <h3>Previous Launches</h3>
+            <button>View all</button>
+            <LaunchThumnail incomingData={pastData}/>
+          </div>
+          <div className="futureColumn">
+            <h3>Upcoming Launches</h3>
+            <button>View all</button>
+            <LaunchThumnail incomingData={futureData}/>
+          </div>
         </div>
-        <div className="futureColumn">
-          <h3>Upcoming Launches</h3>
-          <button>View all</button>
-          {
-            futureData.map((mission, index)=>{
-              return(
-                <div key={index} className="missionTile">
-                  <h1>{mission.name}</h1>
-                  <h2>{
-                    convertDateFromIso(mission.net)
-                  }</h2>
-                  <button onClick={()=>{
-                    navigate(`/launches/${mission.id}`)
-                  }}>More Info</button>
-                  <img src={mission.image}></img>
-                </div>
-              )
-            })
-          }
-        </div>
-      </div>
-      
-
-
+      }
     </>
   )
 }

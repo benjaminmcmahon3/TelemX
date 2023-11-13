@@ -32,12 +32,12 @@ export default function SingleLaunch(){
   return(
     <>
       <h1>Hello</h1>
-      {!isLoading &&
+      {!isLoading && singleLaunchData &&
         <div>
         <h1>{singleLaunchData.name}</h1>
         <h2>{convertDateFromIso(singleLaunchData.net)}</h2>
-        <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>
-        <img src={singleLaunchData.image}></img>
+        {singleLaunchData.mission_patches[0] && <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>}
+        {singleLaunchData.image && <img src={singleLaunchData.image}></img>}
       </div>}
     </>
   )

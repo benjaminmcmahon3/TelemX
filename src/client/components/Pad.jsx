@@ -15,7 +15,6 @@ export default function Pad(){
     setLaunchSiteName(launchSiteString[0].toUpperCase() + launchSiteString.substring(1))
   }
 
-
   return(
     <>
       <h1>
