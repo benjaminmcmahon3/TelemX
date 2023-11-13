@@ -4,12 +4,12 @@ import { useEffect, useState } from "react"
 
 export default function Pad(){
 
-  let launchSitePerParams = useParams()
+  let { launchSite } = useParams()
   const [ launchSiteName, setLaunchSiteName ] = useState(null)
 
   useEffect(()=>{
-    launchSiteNameSetter(launchSitePerParams.launchSite)
-  },[launchSitePerParams])
+    launchSiteNameSetter(launchSite)
+  },[launchSite])
 
   async function launchSiteNameSetter(launchSiteString){
     setLaunchSiteName(launchSiteString[0].toUpperCase() + launchSiteString.substring(1))
@@ -23,7 +23,7 @@ export default function Pad(){
         launchSiteName
         }
       </h1>
-      <LaunchTiles launchSite={launchSitePerParams} />
+      <LaunchTiles launchSite={launchSite} />
     </>
   )
 }

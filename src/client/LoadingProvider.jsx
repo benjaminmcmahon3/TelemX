@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
+import LoadingContext from "./LoadingContext"
 
-export default function LoadingIcon(){
+export default function LoadingProvider({ children }){
 
   const [ isLoading, setIsLoading ] = useState(false)
 
-  useEffect(()=>{
     const startLoading = ()=>{
       setIsLoading(true)
     }
@@ -12,21 +12,11 @@ export default function LoadingIcon(){
       setIsLoading(false)
     }
 
-    window.addEventListener('startLoading', startLoading);
-    window.addEventListener('stopLoading', stopLoading);
-
-    return(()=>{
-      window.removeEventListener('startLoading', startLoading);
-      window.removeEventListener('stopLoading', stopLoading);
-    })
-  },[isLoading])
-
-  if(!isLoading){
-    return null
-  }
-
   return(
     <>
+     {isLoading && (
+        <div className="loadingIcon"></div>
+      )}
       <style>
         {`
           @keyframes spin {
@@ -40,10 +30,16 @@ export default function LoadingIcon(){
             width: 40px;
             height: 40px;
             animation: spin 2s linear infinite;
+            position: absolute; // Adjust positioning as needed
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
           }
         `}
       </style>
-      <div className="loadingIcon"></div>
+      <LoadingContext.Provider value={{ isLoading, startLoading, stopLoading }}>
+        {children}
+      </LoadingContext.Provider>
     </>
   )
 }

@@ -45,3 +45,14 @@
       minute: '2-digit'
     }))
   }
+
+  export async function fetchSingleLaunch(id){
+    try{
+      const response = await fetch(baseUrl + `launch/${id}`)
+      const result = await response.json()
+      console.log('Single launch from dataHandler: ', result)
+      return (result)
+    }catch(err){
+      console.log('Error', err)
+    }
+  }

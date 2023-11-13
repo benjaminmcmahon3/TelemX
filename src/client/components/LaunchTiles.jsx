@@ -1,23 +1,26 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import './DataTiles.css'
 import { fetchFutureLaunches, fetchPastLaunches, convertDateFromIso } from "../dataHandler"
-import LoadingIcon from "./LoadingIcon"
+import { useNavigate } from "react-router-dom"
+import LoadingContext from "../LoadingContext"
 
 export default function LaunchTiles({launchSite}){
 
-  const [ futureData, setFutureData ] = useState([])
-  const [ pastData, setPastData ] = useState([])
+  const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
+  const [ futureData, setFutureData ] = useState(null);
+  const [ pastData, setPastData ] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(()=>{
-    window.dispatchEvent(new Event('startLoading'));
+    startLoading();
     const locationId = {
       'vandy': 11,
       'cape': 12,
       'starbase': 143
     };
-    const newLocationId = locationId[launchSite.launchSite];
+    const newLocationId = locationId[launchSite];
     if (!newLocationId) {
-      console.log(`${launchSite.launchSite} not found`);
+      console.log(`${launchSite} not found`);
       return;
     }
     async function fetchInitialLaunches(){
@@ -28,20 +31,25 @@ export default function LaunchTiles({launchSite}){
         ]);
         setFutureData(future)
         setPastData(past)
-        window.dispatchEvent(new Event('stopLoading'))
       }catch(err){
         console.log('Error', err)
+      }finally{
+        stopLoading();
       }
     }
     fetchInitialLaunches()
   },[launchSite])
 
+  if (!futureData || !pastData){
+    return null
+  }
+
   return(
     <>
       <div className="missionTileContainer">
-        <LoadingIcon />
         <div className="pastColumn">
           <h3>Previous Launches</h3>
+          <button>View all</button>
           {
             pastData.map((mission, index)=>{
               return(
@@ -50,6 +58,9 @@ export default function LaunchTiles({launchSite}){
                   <h2>{
                     convertDateFromIso(mission.net)
                   }</h2>
+                  <button onClick={()=>{
+                    navigate(`/launches/${mission.id}`)
+                  }}>More Info</button>
                   <img src={mission.image}></img>
                 </div>
               )
@@ -58,6 +69,7 @@ export default function LaunchTiles({launchSite}){
         </div>
         <div className="futureColumn">
           <h3>Upcoming Launches</h3>
+          <button>View all</button>
           {
             futureData.map((mission, index)=>{
               return(
@@ -66,6 +78,9 @@ export default function LaunchTiles({launchSite}){
                   <h2>{
                     convertDateFromIso(mission.net)
                   }</h2>
+                  <button onClick={()=>{
+                    navigate(`/launches/${mission.id}`)
+                  }}>More Info</button>
                   <img src={mission.image}></img>
                 </div>
               )
