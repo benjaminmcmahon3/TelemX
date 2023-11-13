@@ -24,3 +24,7 @@
 .missionTile>*{
   max-width: 100%;
 }
+
+.patch{
+  width: 200px;
+}

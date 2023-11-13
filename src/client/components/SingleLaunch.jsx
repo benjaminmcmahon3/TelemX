@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react"
 import { fetchSingleLaunch, convertDateFromIso } from "../dataHandler";
 import { useParams } from "react-router-dom";
 import LoadingContext from "../LoadingContext";
+import './DataTiles.css'
 
 export default function SingleLaunch(){
 
@@ -35,7 +36,7 @@ export default function SingleLaunch(){
         <div>
         <h1>{singleLaunchData.name}</h1>
         <h2>{convertDateFromIso(singleLaunchData.net)}</h2>
-        <img src={singleLaunchData.mission_patches[0].image_url}></img>
+        <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>
         <img src={singleLaunchData.image}></img>
       </div>}
     </>
