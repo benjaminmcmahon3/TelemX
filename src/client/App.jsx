@@ -5,6 +5,7 @@ import NavBar from './components/NavBar'
 import './App.css'
 import SingleLaunch from './components/SingleLaunch'
 import LoadingProvider from './LoadingProvider'
+import Launches from './components/Launches'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<Earth />} />
           <Route path='/:launchSite' element={<Pad />} />
           <Route path='/launches/:launchId' element={<SingleLaunch />} />
+          <Route path='/:launchSite/:timeline' element={<Launches />} />
         </Routes>
       </LoadingProvider>
     </>

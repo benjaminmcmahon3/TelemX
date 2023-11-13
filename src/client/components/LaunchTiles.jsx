@@ -4,13 +4,15 @@ import { fetchFutureLaunches, fetchPastLaunches } from "../dataHandler"
 
 import LoadingContext from "../LoadingContext"
 import LaunchThumnail from "./LaunchThumbnail"
+import { useNavigate } from "react-router-dom"
 
 export default function LaunchTiles({launchSite}){
 
+  const navigate = useNavigate()
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
   const [ futureData, setFutureData ] = useState(null);
   const [ pastData, setPastData ] = useState(null);
-
+  const initialLimit = 5
 
   useEffect(()=>{
     startLoading();
@@ -27,8 +29,8 @@ export default function LaunchTiles({launchSite}){
     async function fetchInitialLaunches(){
       try{
         const [future, past] = await Promise.all([
-          fetchFutureLaunches(newLocationId),
-          fetchPastLaunches(newLocationId)
+          fetchFutureLaunches(newLocationId, initialLimit),
+          fetchPastLaunches(newLocationId, initialLimit)
         ]);
         setFutureData(future)
         setPastData(past)
@@ -51,12 +53,17 @@ export default function LaunchTiles({launchSite}){
         <div className="missionTileContainer">
           <div className="pastColumn">
             <h3>Previous Launches</h3>
-            <button>View all</button>
+            <button onClick={()=>{
+              navigate(`/${launchSite}/past`)
+            }}>View all</button>
             <LaunchThumnail incomingData={pastData}/>
           </div>
+
           <div className="futureColumn">
             <h3>Upcoming Launches</h3>
-            <button>View all</button>
+            <button onClick={()=>{
+              navigate(`/${launchSite}/future`)
+            }}>View all</button>
             <LaunchThumnail incomingData={futureData}/>
           </div>
         </div>
