@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
 import './DataTiles.css'
 import { fetchFutureLaunches, fetchPastLaunches, convertDateFromIso } from "../dataHandler"
+import LoadingIcon from "./LoadingIcon"
 
 export default function LaunchTiles({launchSite}){
 
-  const [ locationId, setLocationId ] = useState(null)
   const [ futureData, setFutureData ] = useState([])
   const [ pastData, setPastData ] = useState([])
 
   useEffect(()=>{
+    window.dispatchEvent(new Event('startLoading'));
     const locationId = {
       'vandy': 11,
       'cape': 12,
@@ -27,6 +28,7 @@ export default function LaunchTiles({launchSite}){
         ]);
         setFutureData(future)
         setPastData(past)
+        window.dispatchEvent(new Event('stopLoading'))
       }catch(err){
         console.log('Error', err)
       }
@@ -37,6 +39,7 @@ export default function LaunchTiles({launchSite}){
   return(
     <>
       <div className="missionTileContainer">
+        <LoadingIcon />
         <div className="pastColumn">
           <h3>Previous Launches</h3>
           {
