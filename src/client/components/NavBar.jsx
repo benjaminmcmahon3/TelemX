@@ -4,9 +4,9 @@ export default function NavBar(){
   return(
     <>
       <Link to='/'>Earth</Link>
-      <Link to='/vandy'>Vandy</Link>
-      <Link to='/cape'>Cape</Link>
-      <Link to='/starbase'>Starbase</Link>
+      <Link to='/pad/vandy'>Vandy</Link>
+      <Link to='/pad/cape'>Cape</Link>
+      <Link to='/pad/starbase'>Starbase</Link>
     </>
   )
 }

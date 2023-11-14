@@ -54,7 +54,7 @@ export default function LaunchTiles({launchSite}){
           <div className="pastColumn">
             <h3>Previous Launches</h3>
             <button onClick={()=>{
-              navigate(`/${launchSite}/past`)
+              navigate(`/pad/${launchSite}/past`)
             }}>View all</button>
             <LaunchThumnail incomingData={pastData}/>
           </div>
@@ -62,7 +62,7 @@ export default function LaunchTiles({launchSite}){
           <div className="futureColumn">
             <h3>Upcoming Launches</h3>
             <button onClick={()=>{
-              navigate(`/${launchSite}/future`)
+              navigate(`/pad/${launchSite}/future`)
             }}>View all</button>
             <LaunchThumnail incomingData={futureData}/>
           </div>

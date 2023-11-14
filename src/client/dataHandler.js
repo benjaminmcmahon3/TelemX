@@ -56,3 +56,17 @@
       console.log('Error', err)
     }
   }
+
+  export async function fetchDispatcher(queryPackage){
+    try{
+      if (queryPackage[locationId]){
+        console.log('contains location')
+      }else if (queryPackage[limit]){
+        console.log('contains limit')
+      }else if (queryPackage[net__lte]){
+        console.log('Dispatching to ')
+      }
+    }catch(err){
+      console.log('Error', err)
+    }
+  }
