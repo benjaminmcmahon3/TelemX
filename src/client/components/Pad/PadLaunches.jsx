@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { fetchFutureLaunches, fetchPastLaunches } from "./padHandler"
+import { fetchFuture, fetchPast } from "./padHandler"
 import LoadingContext from "../../LoadingContext"
 import LaunchThumnail from "../LaunchThumbnail"
 
@@ -23,11 +23,11 @@ export default function PadLaunches(){
     async function fetchAllLaunches(){
       try{
         if (params.timeline === 'past'){
-          const pastResults = await fetchPastLaunches(launchSiteId, allLaunchesLimit)
+          const pastResults = await fetchPast(launchSiteId, allLaunchesLimit)
           setLaunchData(pastResults)
 
         }else if (params.timeline === 'future'){
-          const futureResults = await fetchFutureLaunches(launchSiteId, allLaunchesLimit)
+          const futureResults = await fetchFuture(launchSiteId, allLaunchesLimit)
           setLaunchData(futureResults)
         }
       }catch(err){

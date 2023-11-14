@@ -22,7 +22,7 @@ export default function LaunchThumnail({ data }){
 
   return(
     <>
-      {!isLoading &&
+      {
         launchData.map((mission, index)=>{
           return(
             <div key={index} className="missionTile">
@@ -32,7 +32,7 @@ export default function LaunchThumnail({ data }){
                 convertDateFromIso(mission.net)
               }</h3>
               <button onClick={()=>{
-                navigate(`/launches/${mission.id}`)
+                navigate(`/${mission.id}`)
               }}>More Info</button>
               <img src={mission.image}></img>
             </div>

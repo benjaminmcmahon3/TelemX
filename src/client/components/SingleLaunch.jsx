@@ -31,7 +31,6 @@ export default function SingleLaunch(){
 
   return(
     <>
-      <h1>Hello</h1>
       {!isLoading && singleLaunchData &&
         <div>
         <h1>{singleLaunchData.name}</h1>

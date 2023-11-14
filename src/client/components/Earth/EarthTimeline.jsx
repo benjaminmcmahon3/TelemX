@@ -1,15 +1,15 @@
 import { useEffect, useState, useContext } from "react"
 import LaunchThumnail from "../LaunchThumbnail"
-import { fetchFutureLaunches, fetchPastLaunches } from "./earthHandler"
+import { fetchPast, fetchFuture } from "./earthHandler"
 import { useNavigate } from "react-router-dom"
 import LoadingContext from "../../LoadingContext"
 
 export default function EarthTimeline(){
 
+  const limit = 5
   const [ futureData, setFutureData ] = useState([]);
   const [ pastData, setPastData ] = useState([]);
   const navigate = useNavigate()
-  const timelineLimit = 5
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
 
   useEffect(()=>{
@@ -17,8 +17,8 @@ export default function EarthTimeline(){
     async function fetchEarthTimeline(){
       try{
         const [past, future] = await Promise.all([
-          fetchPastLaunches(timelineLimit),
-          fetchFutureLaunches(timelineLimit)
+          fetchPast(limit),
+          fetchFuture(limit)
         ]);
         setPastData(past)
         setFutureData(future)
@@ -32,7 +32,6 @@ export default function EarthTimeline(){
   },[])
 
   if (!futureData || !pastData){
-    startLoading()
     return null
   }
 

@@ -1,6 +1,6 @@
 // lsp_id=121 filters to only show SpaceX contracts
 // limit=5 sets returned query results to 5
-  const baseUrl = `https://lldev.thespacedevs.com/2.2.0/launch/`
+  const baseUrl = `https://lldev.thespacedevs.com/2.2.0/launch`
   const defualtQuery = `?lsp__id=121`
   
   export function getCurrentIsoDate(){
@@ -22,9 +22,8 @@
 
   export async function fetchSingleLaunch(id){
     try{
-      const response = await fetch(baseUrl + `launch/${id}`)
+      const response = await fetch(baseUrl + `/${id}`)
       const result = await response.json()
-      console.log('Single launch from dataHandler: ', result)
       return (result)
     }catch(err){
       console.log('Error', err)

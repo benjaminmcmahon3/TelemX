@@ -1,24 +1,25 @@
 import { useEffect, useState, useContext } from "react"
 import LaunchThumnail from "../LaunchThumbnail"
-import { fetchFutureLaunches, fetchPastLaunches } from "./padHandler"
-import { useNavigate } from "react-router-dom"
+import { fetchFuture, fetchPast } from "./padHandler"
+import { useNavigate, useParams } from "react-router-dom"
 import LoadingContext from "../../LoadingContext"
 
-export default function LaunchTimeline({ locationId, launchSite }){
+export default function PadTimeline(){
 
+  const limit = 5
+  let { launchSite } = useParams()
   const [ futureData, setFutureData ] = useState(null);
   const [ pastData, setPastData ] = useState(null);
   const navigate = useNavigate()
-  const timelineLimit = 5
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
 
   useEffect(()=>{
     startLoading()
-    async function fetchTimeline(){
+    async function fetchPadTimeline(){
       try{
         const [past, future] = await Promise.all([
-          fetchPastLaunches(locationId, timelineLimit),
-          fetchFutureLaunches(locationId, timelineLimit)
+          fetchPast(launchSite, limit),
+          fetchFuture(launchSite, limit)
         ]);
         setPastData(past)
         setFutureData(future)
@@ -28,18 +29,17 @@ export default function LaunchTimeline({ locationId, launchSite }){
         stopLoading();
       }
     }
-    fetchTimeline()
-  },[locationId])
+    fetchPadTimeline()
+  },[launchSite])
 
   if (!futureData || !pastData){
-    startLoading()
     return null
   }
 
   return(
     <>
       <div>
-        {!isLoading && launchSite &&
+        {!isLoading &&
           <div className="missionTileContainer">
             <div className="pastColumn">
               <h3>Previous Launches</h3>
