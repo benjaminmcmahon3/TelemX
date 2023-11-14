@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { fetchFutureLaunches, fetchPastLaunches } from "../dataHandler"
-import LoadingContext from "../LoadingContext"
-import LaunchThumnail from "./LaunchThumbnail"
+import { fetchFutureLaunches, fetchPastLaunches } from "./padHandler"
+import LoadingContext from "../../LoadingContext"
+import LaunchThumnail from "../LaunchThumbnail"
 
-export default function Launches(){
+export default function PadLaunches(){
 
   const params = useParams()
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
@@ -48,7 +48,6 @@ export default function Launches(){
       <h1>Hello</h1>
       {!isLoading &&
         <div>
-        {console.log('dadssaas', launchData)}
           <LaunchThumnail incomingData={launchData}/>
         </div>
       }

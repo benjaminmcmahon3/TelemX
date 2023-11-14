@@ -3,7 +3,7 @@ import LoadingContext from "../LoadingContext"
 import { convertDateFromIso } from "../dataHandler"
 import { useNavigate } from "react-router-dom"
 
-export default function LaunchThumnail({ incomingData }){
+export default function LaunchThumnail({ data }){
 
   const { isLoading } = useContext(LoadingContext)
   const [ launchData, setLaunchData ] = useState([])
@@ -12,13 +12,13 @@ export default function LaunchThumnail({ incomingData }){
   useEffect(()=>{
     async function dataSetter(){
       try{
-        setLaunchData(incomingData)
+        setLaunchData(data)
       }catch(err){
         console.log('Error', err)
       }
     }
     dataSetter()
-  },[incomingData])
+  },[data])
 
   return(
     <>
@@ -26,10 +26,11 @@ export default function LaunchThumnail({ incomingData }){
         launchData.map((mission, index)=>{
           return(
             <div key={index} className="missionTile">
-              <h1>{mission.name}</h1>
-              <h2>{
+              <h3>{mission.name}</h3>
+              <h3>{mission.pad.name}</h3>
+              <h3>{
                 convertDateFromIso(mission.net)
-              }</h2>
+              }</h3>
               <button onClick={()=>{
                 navigate(`/launches/${mission.id}`)
               }}>More Info</button>
