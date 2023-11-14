@@ -1,17 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-import LoadingContext from '../../LoadingContext'
-import { useContext, useEffect } from 'react'
 import EarthTimeline from './EarthTimeline'
 import '../DataTiles.css'
 
 export default function Earth(){
 
   const navigate = useNavigate()
-  const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
-
-  useEffect(()=>{
-    startLoading()
-  },[])
 
   return(
     <>

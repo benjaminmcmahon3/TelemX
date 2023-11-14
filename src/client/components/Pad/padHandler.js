@@ -12,6 +12,8 @@ export async function fetchPast(launchSite, limit){
     let fetchQuery = `&limit=${limit}&pad__location=${locationReference[launchSite]}&net__lte=${getCurrentIsoDate()}&ordering=-net`
     const response = await fetch(baseUrl + fetchQuery)
     const result = await response.json()
+    console.log(result)
+    console.log(baseUrl + fetchQuery)
     return (result.results)
   }catch(err){
     console.log(`Error fetch past launch data from ${launchSite}`, err)

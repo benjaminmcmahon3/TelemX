@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react"
-import LaunchThumnail from "../LaunchThumbnail"
+import LaunchThumbnail from "../LaunchThumbnail"
 import { fetchPast, fetchFuture } from "./earthHandler"
 import { useNavigate } from "react-router-dom"
 import LoadingContext from "../../LoadingContext"
@@ -35,6 +35,8 @@ export default function EarthTimeline(){
     return null
   }
 
+  console.log('Past: ', pastData, 'Future: ', futureData)
+
   return(
     <>
       <div>
@@ -45,14 +47,23 @@ export default function EarthTimeline(){
               <button onClick={()=>{
                 navigate(`/launches/past`)
               }}>View all</button>
-              <LaunchThumnail data={pastData}/>
+              {
+                pastData.map((launch, index)=>{
+                  return <LaunchThumbnail key={index} launch={launch}/>
+                })
+              }
             </div>
+
             <div className="futureColumn">
               <h3>Upcoming Launches</h3>
               <button onClick={()=>{
                 navigate(`/launches/future`)
               }}>View all</button>
-              <LaunchThumnail data={futureData}/>
+              {
+                futureData.map((launch, index)=>{
+                  return <LaunchThumbnail key={index} launch={launch}/>
+                })
+              }
             </div>
           </div>
         }

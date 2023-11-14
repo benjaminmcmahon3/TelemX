@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react"
-import LaunchThumnail from "../LaunchThumbnail"
+import LaunchThumbnail from "../LaunchThumbnail"
 import { fetchFuture, fetchPast } from "./padHandler"
 import { useNavigate, useParams } from "react-router-dom"
 import LoadingContext from "../../LoadingContext"
@@ -36,6 +36,8 @@ export default function PadTimeline(){
     return null
   }
 
+  console.log('Past: ', pastData, 'Future: ', futureData)
+
   return(
     <>
       <div>
@@ -46,14 +48,22 @@ export default function PadTimeline(){
               <button onClick={()=>{
                 navigate(`/pad/${launchSite}/past`)
               }}>View all</button>
-              <LaunchThumnail data={pastData}/>
+              {
+                pastData.map((launch, index)=>{
+                  return <LaunchThumbnail key={index} launch={launch}/>
+                })
+              }
             </div>
             <div className="futureColumn">
               <h3>Upcoming Launches</h3>
               <button onClick={()=>{
                 navigate(`/pad/${launchSite}/future`)
               }}>View all</button>
-              <LaunchThumnail data={futureData}/>
+              {
+                futureData.map((launch, index)=>{
+                  return <LaunchThumbnail key={index} launch={launch}/>
+                })
+              }
             </div>
           </div>
         }
