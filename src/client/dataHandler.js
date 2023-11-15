@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 const baseUrl = `https://lldev.thespacedevs.com/2.2.0/launch`
   
 export function getCurrentIsoDate(){
@@ -25,4 +27,13 @@ export async function fetchSingleLaunch(id){
   }catch(err){
     console.log('Error', err)
   }
+}
+
+export default function abortDispatcher(){
+  let abortController = new AbortController()
+}
+
+export async function abortFetch(){
+  console.log('Aborting fetch')
+  AbortController.current
 }

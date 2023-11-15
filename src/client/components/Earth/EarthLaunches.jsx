@@ -13,7 +13,7 @@ export default function EarthLaunches(){
 
   useEffect(()=>{
     startLoading()
-    async function fetchAllLaunches(){
+    async function fetchEarthLaunches(){
       try{
         if (params.timeline === 'past'){
           const pastResults = await fetchPast(limit)
@@ -29,7 +29,7 @@ export default function EarthLaunches(){
         stopLoading()
       }
     }
-    fetchAllLaunches()
+    fetchEarthLaunches()
   },[params])
 
   if (!launchData){
@@ -42,7 +42,6 @@ export default function EarthLaunches(){
         <div>
           {
             launchData.map((launch, index)=>{
-              console.log(launch)
               return <LaunchThumbnail key={index} launch={launch}/>
             })
           }

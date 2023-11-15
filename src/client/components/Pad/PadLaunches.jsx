@@ -13,7 +13,7 @@ export default function PadLaunches(){
 
   useEffect(()=>{
     startLoading()
-    async function fetchAllLaunches(){
+    async function fetchPadLaunches(){
       try{
         if (params.timeline === 'past'){
           const pastResults = await fetchPast(params.launchSite, limit)
@@ -29,14 +29,12 @@ export default function PadLaunches(){
         stopLoading()
       }
     }
-    fetchAllLaunches()
+    fetchPadLaunches()
   },[params])
 
   if (!launchData){
     return null
   }
-
-  console.log(launchData)
 
   return(
     <>

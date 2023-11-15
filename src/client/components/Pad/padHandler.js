@@ -12,11 +12,10 @@ export async function fetchPast(launchSite, limit){
     let fetchQuery = `&limit=${limit}&pad__location=${locationReference[launchSite]}&net__lte=${getCurrentIsoDate()}&ordering=-net`
     const response = await fetch(baseUrl + fetchQuery)
     const result = await response.json()
-    console.log(result)
-    console.log(baseUrl + fetchQuery)
+    console.log(`Past ${launchSite} launch data: `, result)
     return (result.results)
   }catch(err){
-    console.log(`Error fetch past launch data from ${launchSite}`, err)
+    console.log(`Error fetching past ${launchSite} launch data: `, err)
   }
 }
 
@@ -25,8 +24,9 @@ export async function fetchFuture(launchSite, limit){
     let fetchQuery = `&limit=${limit}&pad__location=${locationReference[launchSite]}&net__gte=${getCurrentIsoDate()}&ordering=net`
     const response = await fetch(baseUrl + fetchQuery)
     const result = await response.json()
+    console.log(`Future ${launchSite} launch data: `, result)
     return (result.results)
   }catch(err){
-    console.log(`Error fetching future launch from ${launchSite}`)
+    console.log(`Error fetching future ${launchSite} launch data: `, err)
   }
 }

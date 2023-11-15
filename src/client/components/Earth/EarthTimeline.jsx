@@ -35,8 +35,6 @@ export default function EarthTimeline(){
     return null
   }
 
-  console.log('Past: ', pastData, 'Future: ', futureData)
-
   return(
     <>
       <div>

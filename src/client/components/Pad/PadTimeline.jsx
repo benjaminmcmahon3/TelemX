@@ -36,8 +36,6 @@ export default function PadTimeline(){
     return null
   }
 
-  console.log('Past: ', pastData, 'Future: ', futureData)
-
   return(
     <>
       <div>
