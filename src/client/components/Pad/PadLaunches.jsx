@@ -1,33 +1,26 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { fetchFutureLaunches, fetchPastLaunches } from "../dataHandler"
-import LoadingContext from "../LoadingContext"
-import LaunchThumnail from "./LaunchThumbnail"
+import { fetchFuture, fetchPast } from "./padHandler"
+import LoadingContext from "../../LoadingContext"
+import LaunchThumbnail from "../LaunchThumbnail"
 
-export default function Launches(){
+export default function PadLaunches(){
 
+  const limit = 10
   const params = useParams()
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
-  const allLaunchesLimit = 10
   const [ launchData, setLaunchData ] = useState([])
 
   useEffect(()=>{
     startLoading()
-    const locationId = {
-      'vandy': 11,
-      'cape': 12,
-      'starbase': 143
-    };
-    const launchSiteId = locationId[params.launchSite]
-
-    async function fetchAllLaunches(){
+    async function fetchPadLaunches(){
       try{
         if (params.timeline === 'past'){
-          const pastResults = await fetchPastLaunches(launchSiteId, allLaunchesLimit)
+          const pastResults = await fetchPast(params.launchSite, limit)
           setLaunchData(pastResults)
 
         }else if (params.timeline === 'future'){
-          const futureResults = await fetchFutureLaunches(launchSiteId, allLaunchesLimit)
+          const futureResults = await fetchFuture(params.launchSite, limit)
           setLaunchData(futureResults)
         }
       }catch(err){
@@ -36,7 +29,7 @@ export default function Launches(){
         stopLoading()
       }
     }
-    fetchAllLaunches()
+    fetchPadLaunches()
   },[params])
 
   if (!launchData){
@@ -45,11 +38,13 @@ export default function Launches(){
 
   return(
     <>
-      <h1>Hello</h1>
       {!isLoading &&
         <div>
-        {console.log('dadssaas', launchData)}
-          <LaunchThumnail incomingData={launchData}/>
+          {
+            launchData.map((launch, index)=>{
+              return <LaunchThumbnail key={index} launch={launch}/>
+            })
+          }
         </div>
       }
     </>
