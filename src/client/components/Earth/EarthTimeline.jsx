@@ -1,12 +1,13 @@
-import { useEffect, useState, useContext } from "react"
-import LaunchThumbnail from "../LaunchThumbnail"
+import { useEffect, useState, useContext, useRef } from "react"
+import EarthThumbnail from "./EarthThumbnail"
 import { fetchPast, fetchFuture } from "./earthHandler"
 import { useNavigate } from "react-router-dom"
 import LoadingContext from "../../LoadingContext"
+import './Earth.css'
 
 export default function EarthTimeline(){
 
-  const limit = 5
+  const limit = 3
   const [ futureData, setFutureData ] = useState([]);
   const [ pastData, setPastData ] = useState([]);
   const navigate = useNavigate()
@@ -39,27 +40,21 @@ export default function EarthTimeline(){
     <>
       <div>
         {!isLoading &&
-          <div className="missionTileContainer">
-            <div className="pastColumn">
-              <h3>Previous Launches</h3>
-              <button onClick={()=>{
-                navigate(`/launches/past`)
-              }}>View all</button>
+          <div className="timelineContainer" >
+            <div className="pastContainer">
               {
                 pastData.map((launch, index)=>{
-                  return <LaunchThumbnail key={index} launch={launch}/>
+                  return <EarthThumbnail key={index} launch={launch} />
                 })
               }
             </div>
-
-            <div className="futureColumn">
-              <h3>Upcoming Launches</h3>
-              <button onClick={()=>{
-                navigate(`/launches/future`)
-              }}>View all</button>
+            <div className="presentIndicator">
+              <h1>Present</h1>
+            </div>
+            <div className="futureContainer">
               {
                 futureData.map((launch, index)=>{
-                  return <LaunchThumbnail key={index} launch={launch}/>
+                  return <EarthThumbnail key={index} launch={launch} />
                 })
               }
             </div>

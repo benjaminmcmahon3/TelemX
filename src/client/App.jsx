@@ -11,7 +11,7 @@ import PadLaunches from './components/Pad/PadLaunches'
 function App() {
 
   return (
-    <>
+    <div className='appContainer'>
       <LoadingProvider>
         <NavBar />
         <Routes>
@@ -29,7 +29,7 @@ function App() {
           <Route path='/:launchId' element={<SingleLaunch />} />
         </Routes>
       </LoadingProvider>
-    </>
+    </div>
   )
 }
 

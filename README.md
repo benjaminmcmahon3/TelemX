@@ -12,6 +12,11 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
 * Make custom loading icon (rocket?, fairing sep?)
 * Create Earth graphic with pad navigation buttons over respective locations
 * Experiment with a "launch replay" feature
+* Introduce an abort controller to prevent unnecessary network requests and rendering the wrong data
+* Switch to a React view model
+#### Known Bugs
+* Loading icon disappears too early on Earth view
+* Potential for page to render first fetch request initiated when navigating quickly
 
 ## Project 
   * [GitHub](https://github.com/benjaminmcmahon3/TelemX)

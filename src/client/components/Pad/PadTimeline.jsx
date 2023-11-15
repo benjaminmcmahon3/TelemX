@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react"
-import LaunchThumbnail from "../LaunchThumbnail"
+import PadThumbnail from "./PadThumbnail"
 import { fetchFuture, fetchPast } from "./padHandler"
 import { useNavigate, useParams } from "react-router-dom"
 import LoadingContext from "../../LoadingContext"
@@ -48,7 +48,7 @@ export default function PadTimeline(){
               }}>View all</button>
               {
                 pastData.map((launch, index)=>{
-                  return <LaunchThumbnail key={index} launch={launch}/>
+                  return <PadThumbnail key={index} launch={launch}/>
                 })
               }
             </div>
@@ -59,7 +59,7 @@ export default function PadTimeline(){
               }}>View all</button>
               {
                 futureData.map((launch, index)=>{
-                  return <LaunchThumbnail key={index} launch={launch}/>
+                  return <PadThumbnail key={index} launch={launch}/>
                 })
               }
             </div>

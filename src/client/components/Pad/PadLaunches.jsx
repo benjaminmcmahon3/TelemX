@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { fetchFuture, fetchPast } from "./padHandler"
 import LoadingContext from "../../LoadingContext"
-import LaunchThumbnail from "../LaunchThumbnail"
+import PadThumbnail from "./PadThumbnail"
 
 export default function PadLaunches(){
 
@@ -42,7 +42,7 @@ export default function PadLaunches(){
         <div>
           {
             launchData.map((launch, index)=>{
-              return <LaunchThumbnail key={index} launch={launch}/>
+              return <PadThumbnail key={index} launch={launch}/>
             })
           }
         </div>

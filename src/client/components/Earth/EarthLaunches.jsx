@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { fetchFuture, fetchPast } from "./earthHandler"
 import LoadingContext from "../../LoadingContext"
-import LaunchThumbnail from "../LaunchThumbnail"
+import EarthThumbnail from "../Pad/PadThumbnail"
 
 export default function EarthLaunches(){
 
@@ -42,7 +42,7 @@ export default function EarthLaunches(){
         <div>
           {
             launchData.map((launch, index)=>{
-              return <LaunchThumbnail key={index} launch={launch}/>
+              return <EarthThumbnail key={index} launch={launch}/>
             })
           }
         </div>
