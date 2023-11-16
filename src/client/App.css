@@ -1,0 +1,35 @@
+.earthContainer{
+  position: relative;
+  width: 95%;
+  height: 95%;
+  padding: 5px;
+  background-color: rgb(0, 0, 0);
+  color: aliceblue;
+}
+.padButtonContainer{
+  position: fixed;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40vw;
+  height: 40vw;
+}
+.padButtonContainer>*{
+  position: absolute;
+}
+#earthImage{
+  width: 100%;
+  height: auto;
+}
+#vandyPadButton{
+  top: 45%;
+  left: 20%;
+}
+#capePadButton{
+  top: 57%;
+  left: 66%
+}
+#starbasePadButton{
+  top: 61%;
+  left: 45%;
+}

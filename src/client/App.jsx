@@ -1,4 +1,4 @@
-import {Routes, Route} from 'react-router-dom'
+import {Routes, Route } from 'react-router-dom'
 import Earth from './components/Earth'
 import NavBar from './components/NavBar'
 import './App.css'

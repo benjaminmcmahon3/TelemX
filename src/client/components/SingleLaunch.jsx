@@ -10,7 +10,7 @@ export default function SingleLaunch(){
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
 
   useEffect(()=>{
-    startLoading()
+    startLoading
     async function setLaunchData(){
       try{
         const launchData = await fetchSingleLaunch(launchId)
@@ -21,7 +21,7 @@ export default function SingleLaunch(){
         stopLoading()
       }
     }
-    setLaunchData()
+    setLaunchData().then(stopLoading)
   },[launchId])
 
   if (!singleLaunchData){
