@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from "react"
 import { fetchSingleLaunch, convertDateFromIso } from "../dataHandler";
 import { useParams } from "react-router-dom";
 import LoadingContext from "../LoadingContext";
-import './DataTiles.css'
 
 export default function SingleLaunch(){
 
@@ -11,7 +10,7 @@ export default function SingleLaunch(){
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
 
   useEffect(()=>{
-    startLoading()
+    startLoading
     async function setLaunchData(){
       try{
         const launchData = await fetchSingleLaunch(launchId)
@@ -22,7 +21,7 @@ export default function SingleLaunch(){
         stopLoading()
       }
     }
-    setLaunchData()
+    setLaunchData().then(stopLoading)
   },[launchId])
 
   if (!singleLaunchData){

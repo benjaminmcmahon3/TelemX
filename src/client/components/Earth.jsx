@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import EarthTimeline from './EarthTimeline'
-import './Earth.css'
-import earthImage from '../../assets/Earth.png'
+import earthImage from '../assets/Earth.png'
+import '../App.css'
 
 export default function Earth(){
 
@@ -17,22 +16,10 @@ export default function Earth(){
           <button id='starbasePadButton' onClick={()=>{navigate('/pad/starbase')}}>Starbase</button>
         </div>
       <div>
-        <div className="pastMarker">
-          <h3>Previous Launches</h3>
-          <button onClick={()=>{
-            navigate(`/launches/past`)
-          }}>View all</button>
-        </div>
-        <div className='futureMarker'>
-          <h3>Upcoming Launches</h3>
-          <button onClick={()=>{
-            navigate(`/launches/future`)
-          }}>View all</button>
-        </div>
+        
+        
       </div>
-      <div>
-        <EarthTimeline />
-      </div>
+
     </div>
   )
 }

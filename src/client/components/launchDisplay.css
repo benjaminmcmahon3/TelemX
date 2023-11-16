@@ -1,0 +1,109 @@
+/* Timeline */
+.timelineContainer {
+  display: grid;
+  grid-template-columns: 49vw 2vw 49vw;
+  grid-template-rows: 30vh;
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+}
+.timelinePast{
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+}
+.timelineIndicator {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  color: aliceblue;
+  text-align: center;
+  width: 20%;
+}
+.timelineFuture{
+  position: fixed;
+  right: 0;
+  bottom: 50px;
+}
+.launchesContainer{
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+/* Tiles */
+.tileContainer{
+  position: relative;
+  padding: 0px;
+  margin: 3px;
+  width: 400px;
+  height: 300px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: aliceblue;
+}
+.tileBody{
+  position: relative;
+  overflow: hidden;
+  border: 5px solid aliceblue;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+.tileDate{
+  margin: 5px;
+}
+.tileTitle{
+  text-align: center;
+  margin: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.tileImage{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.tileButton{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Loading icon */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.loadingIcon {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pastMarker, .futureMarker{
+  display: flex;
+  position: fixed;
+  color: aliceblue;
+  bottom: 0;
+}
+.pastMarker{
+  left: 0;
+}
+.futureMarker{
+  right: 0;
+}

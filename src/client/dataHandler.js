@@ -1,6 +1,9 @@
-import { useRef } from "react";
-
-const baseUrl = `https://lldev.thespacedevs.com/2.2.0/launch`
+const baseUrl = `https://lldev.thespacedevs.com/2.2.0/launch/`
+const locationReference = {
+  'vandy': 11,
+  'cape': 12,
+  'starbase': 143
+};
   
 export function getCurrentIsoDate(){
   let date = new Date()
@@ -21,19 +24,52 @@ export function convertDateFromIso(isoDate){
 
 export async function fetchSingleLaunch(id){
   try{
-    const response = await fetch(baseUrl + `/${id}`)
+    const url = new URL(id, baseUrl)
+    const response = await fetch(url);
+    if(!response.ok){
+      throw new Error(`HTTP error, status: ${response.status}`);
+    }
     const result = await response.json()
     return (result)
   }catch(err){
-    console.log('Error', err)
+    throw err
   }
 }
 
-export default function abortDispatcher(){
-  let abortController = new AbortController()
+export async function fetchLaunches(fetchQuery){
+  try{
+    const url = new URL(fetchQuery, baseUrl)
+    const response = await fetch(url);
+    if(!response.ok){
+      throw new Error(`HTTP error, status: ${response.status}`);
+    }
+    const result = await response.json()
+    console.log('Resultant launch data: ', result);
+    return (result.results)
+  }catch(err){
+    throw err;
+  }
 }
 
-export async function abortFetch(){
-  console.log('Aborting fetch')
-  AbortController.current
+export async function queryDispatcher(timeFrame, limit, launchSite){
+  try{
+    // Validates input parameters
+    if(!['past', 'future'].includes(timeFrame)){
+      throw new Error(`Invalid timeFrame: ${timeFrame}`);
+    }
+    if(!limit){
+      throw new Error(`Invalid limit: ${limit}`);
+    }
+    // Sets filters according to input timeFrame
+    const timeFilter = timeFrame === 'past' ? `net__lte=${getCurrentIsoDate()}` : `net__gte=${getCurrentIsoDate()}`;
+    const ordering = timeFrame === 'past' ? 'ordering=-net' : 'ordering=net';
+    // Builds query
+    let fetchQuery = `?lsp__id=121&limit=${limit}&${timeFilter}&${ordering}`;
+    if (launchSite){
+      fetchQuery += `&pad__location=${locationReference[launchSite]}`;
+    }
+    return await fetchLaunches(fetchQuery);
+  }catch(err){
+    throw err;
+  }
 }

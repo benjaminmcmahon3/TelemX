@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { abortFetch } from '../dataHandler'
 
 export default function NavBar(){
   return(
