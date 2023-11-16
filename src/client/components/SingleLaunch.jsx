@@ -2,7 +2,6 @@ import { useEffect, useState, useContext } from "react"
 import { fetchSingleLaunch, convertDateFromIso } from "../dataHandler";
 import { useParams } from "react-router-dom";
 import LoadingContext from "../LoadingContext";
-import './DataTiles.css'
 
 export default function SingleLaunch(){
 

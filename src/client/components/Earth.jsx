@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import EarthTimeline from './EarthTimeline'
-import './Earth.css'
-import earthImage from '../../assets/Earth.png'
+import earthImage from '../assets/Earth.png'
+import './launchDisplay.css'
 
 export default function Earth(){
 
@@ -30,9 +29,7 @@ export default function Earth(){
           }}>View all</button>
         </div>
       </div>
-      <div>
-        <EarthTimeline />
-      </div>
+
     </div>
   )
 }

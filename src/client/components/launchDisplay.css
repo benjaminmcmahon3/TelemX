@@ -1,3 +1,16 @@
+.tileContainer>*{
+  width: 100%;
+  height: 100%;
+}
+.tileContainer{
+  width: 200px;
+  height: 200px;
+  border: 5px solid aliceblue;
+  color: aliceblue;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
 .earthContainer{
   position: relative;
   width: 95%;
@@ -70,7 +83,6 @@
   width: auto;
   object-fit: cover;
 }
-
 
 /* Earth graphic and pad navigation buttons */
 .padButtonContainer{

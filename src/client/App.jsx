@@ -1,32 +1,33 @@
 import {Routes, Route} from 'react-router-dom'
-import Earth from './components/Earth/Earth'
-import Pad from './components/Pad/Pad'
+import Earth from './components/Earth'
 import NavBar from './components/NavBar'
 import './App.css'
 import SingleLaunch from './components/SingleLaunch'
 import LoadingProvider from './LoadingProvider'
-import EarthLaunches from './components/Earth/EarthLaunches'
-import PadLaunches from './components/Pad/PadLaunches'
+import Launches from './components/Launches'
+import Timeline from './components/Timeline'
 
 function App() {
+
+  const defaultLimit = 10;
 
   return (
     <div className='appContainer'>
       <LoadingProvider>
         <NavBar />
+        <Earth />
         <Routes>
-          {/* All launch data */}
-          <Route path='/' element={<Earth />} />
-          <Route path='/launches' element={<EarthLaunches />} />
-          <Route path='/launches/:timeline' element={<EarthLaunches />} />
-
-          {/* Pad specific launch data */}
-          <Route path='/pad/:launchSite' element={<Pad />} />
-          <Route path='/pad/:launchSite/launches' element={<PadLaunches />} />
-          <Route path='/pad/:launchSite/:timeline' element={<PadLaunches />} />
-
-          {/* Single launch data */}
+          <Route path='/' element={<Timeline />} />
           <Route path='/:launchId' element={<SingleLaunch />} />
+
+          <Route path='/launches' element={<Launches />} />
+          <Route path='/launches/past' element={<Launches timeFrame={'past'} limit={defaultLimit} />} />
+          <Route path='/launches/future' element={<Launches timeFrame={'future'} limit={defaultLimit} />} />
+
+          <Route path='/pad/:launchSite' element={<Timeline />} />
+          <Route path='/pad/:launchSite/launches' element={<Launches />} />
+          <Route path='/pad/:launchSite/past' element={<Launches timeFrame={'past'} limit={defaultLimit} />} />
+          <Route path='/pad/:launchSite/future' element={<Launches timeFrame={'future'} limit={defaultLimit} />} />
         </Routes>
       </LoadingProvider>
     </div>
