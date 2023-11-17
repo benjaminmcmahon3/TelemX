@@ -13,6 +13,7 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
 * Switch to a React view model
 * RSS feed in SpaceX, X, tweets
 * Embed launch streams?
+* Add search filter
 #### Known Bugs
 * Launches in Timeline component hangs up, takes a while to fetch
 
