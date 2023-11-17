@@ -17,13 +17,20 @@ export default function Timeline(){
 
   return(
     <div className="timelineContainer">
-      <div className="timelinePast">
-        {/* <div className="pastMarker">
+        <div className="pastMarker">
           <h3>Previous Launches</h3>
           <button onClick={()=>{
             navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/past`)
           }}>View all</button>
-        </div> */}
+        </div>
+        <div className='futureMarker'>
+          <h3>Upcoming Launches</h3>
+          <button onClick={()=>{
+            navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/future`)
+          }}>View all</button>
+      </div>
+
+      <div className="timelinePast">
         <Launches timeFrame={'past'} limit={timelineLimit} />
       </div>
 
@@ -31,15 +38,10 @@ export default function Timeline(){
         <h3>Current Time: {convertDateFromIso(getCurrentIsoDate())}</h3>
       </div>
 
-      {/* <div className='futureMarker'>
-        <h3>Upcoming Launches</h3>
-        <button onClick={()=>{
-          navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/future`)
-        }}>View all</button>
-      </div> */}
+
       <div className="timelineFuture">
         <Launches timeFrame={'future'} limit={timelineLimit} />
       </div>
     </div>
   )
-}
+} 

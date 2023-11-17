@@ -2,7 +2,7 @@ import { convertDateFromIso } from "../dataHandler"
 import { useNavigate } from "react-router-dom"
 import './launchDisplay.css'
 
-export default function Tile({ launch }){
+const Tile = React.memo(({ launch }) => {
 
   const navigate = useNavigate();
 
@@ -23,4 +23,6 @@ export default function Tile({ launch }){
       </div>
     </div>
   )
-}
+})
+
+export default Tile;

@@ -19,16 +19,12 @@ export default function Launches({ timeFrame, limit }){
         setLaunchData(data)
       }catch(err){
         console.error(`Error`, err)
+      }finally{
+        stopLoading();
       }
     }
     fetchLaunchData()
   },[timeFrame, limit, launchSite])
-
-  useEffect(()=>{
-    if(launchData && launchData.length > 0){
-      stopLoading()
-    }
-  },[launchData])
 
   return(
     <div className="launchesContainer" style={{ 
