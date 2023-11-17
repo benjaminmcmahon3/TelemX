@@ -15,7 +15,7 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
 * Embed launch streams?
 * Add search filter
 #### Known Bugs
-* Launches in Timeline component hangs up, takes a while to fetch
+* Loading icon sometimes "stops" before rendering new data
 
 ## Developer
   * Benjamin McMahon
