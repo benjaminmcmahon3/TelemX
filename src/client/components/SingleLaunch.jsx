@@ -31,11 +31,14 @@ export default function SingleLaunch(){
   return(
     <>
       {!isLoading && singleLaunchData &&
-        <div>
-        <h1>{singleLaunchData.name}</h1>
-        <h2>{convertDateFromIso(singleLaunchData.net)}</h2>
-        {singleLaunchData.mission_patches[0] && <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>}
-        {singleLaunchData.image && <img src={singleLaunchData.image}></img>}
+        <div className="singleLaunchContainer">
+          <div>
+            <h3>{singleLaunchData.name}</h3>
+            <h3>{convertDateFromIso(singleLaunchData.net)}</h3>
+            <h3 className="singlePad">{singleLaunchData.pad.name}</h3>
+          </div>
+          {singleLaunchData.mission_patches[0] && <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>}
+          {singleLaunchData.image && <img className="singleLaunchImage" src={singleLaunchData.image}></img>}
       </div>}
     </>
   )

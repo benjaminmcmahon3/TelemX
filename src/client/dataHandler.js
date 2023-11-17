@@ -1,4 +1,5 @@
-const baseUrl = `https://lldev.thespacedevs.com/2.2.0/launch/`
+const apiBranch = 'lldev'
+const baseUrl = `https://${apiBranch}.thespacedevs.com/2.2.0/launch/`
 const locationReference = {
   'vandy': 11,
   'cape': 12,

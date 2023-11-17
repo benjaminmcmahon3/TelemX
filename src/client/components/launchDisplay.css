@@ -35,9 +35,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: aliceblue;
-  border: 5px solid aliceblue;
+  color: rgb(131, 182, 221);
+  border: 1px solid aliceblue;
   border-radius: 10px;
+  background-color: rgb(33, 33, 33);
 }
 .tileTop, .tileBottom{
   overflow: hidden;
@@ -54,10 +55,11 @@
   height: 100%;
   width: auto;
   transform: translate(-50%, -50%);
-  z-index: -1;
 }
 .tileButton{
+  position: absolute;
   text-align: center;
+  z-index: 2;
 }
 
 /* Loading icon */
@@ -89,4 +91,26 @@
 }
 .futureMarker{
   right: 0;
+}
+
+.singleLaunchContainer{
+  display: flex;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  height: 350px;
+}
+.patch{
+  width: 200px;
+  height: 200px;
+}
+.singleLaunchImage{
+  height: 100%;
+  width: auto;
+}
+.singleLaunchContainer>*{
+  color: aliceblue;
 }

@@ -24,7 +24,7 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
   * [LinkedIn](https://www.linkedin.com/in/benjaminmcmahon3/)
 
 ## Project 
-  * [GitHub](https://github.com/benjaminmcmahon3/TelemX)
+  * [GitHub Repo](https://github.com/benjaminmcmahon3/TelemX)
   * Thanks to Open AI for building such powerful tools, DALL-E used to create Earth graphic
   * Thanks goes out to Lucabon for his work on the Falcon SVG art.
     * By Lucabon (based on work of Markus Säynevirta and Craigboy and Rressi ) - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=75671798
