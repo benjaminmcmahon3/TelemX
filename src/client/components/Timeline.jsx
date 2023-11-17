@@ -36,8 +36,8 @@ export default function Timeline(){
 
       <div className="timelineIndicator">
         <h3>Current Time: {convertDateFromIso(getCurrentIsoDate())}</h3>
+        <h3>Select a launch site above to explore its events!</h3>
       </div>
-
 
       <div className="timelineFuture">
         <Launches timeFrame={'future'} limit={timelineLimit} />

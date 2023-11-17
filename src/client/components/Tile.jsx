@@ -1,3 +1,4 @@
+import React from "react"
 import { convertDateFromIso } from "../dataHandler"
 import { useNavigate } from "react-router-dom"
 import './launchDisplay.css'
@@ -19,7 +20,7 @@ const Tile = React.memo(({ launch }) => {
         {/* <h3 className="tilePad">{launch.pad.name}</h3> */}
         <button className="tileButton" onClick={()=>{
           navigate(`/${launch.id}`)
-        }}>More Info</button>
+        }}>More Info (WIP)</button>
       </div>
     </div>
   )
