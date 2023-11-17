@@ -17,7 +17,6 @@ export default function Launches({ timeFrame, limit }){
       try{
         let data = await queryDispatcher(timeFrame, limit, launchSite)
         setLaunchData(data)
-        console.log('launchData set')
       }catch(err){
         console.error(`Error`, err)
       }
@@ -32,17 +31,17 @@ export default function Launches({ timeFrame, limit }){
   },[launchData])
 
   return(
-    <div>
-      <div className="launchesContainer">
-        {isLoading ? (
-          <div className="loadingIcon"></div>
+    <div className="launchesContainer" style={{ 
+        flexDirection: timeFrame === 'past' ? 'row-reverse' : 'row'
+      }}>
+      {isLoading ? (
+        <div className="loadingIcon"></div>
+      ):(
+        launchData.length > 0 ? (
+          launchData.map((launch)=> <Tile key={launch.id} launch={launch} />)
         ):(
-          launchData.length > 0 ? (
-            launchData.map((launch)=> <Tile key={launch.id} launch={launch} />)
-          ):(
-            <h1>No launches to display</h1>
-          ))}
-      </div>
+          <h1>No launches to display</h1>
+        ))}
     </div>
   )
 }

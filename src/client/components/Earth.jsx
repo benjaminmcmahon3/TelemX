@@ -7,19 +7,11 @@ export default function Earth(){
   const navigate = useNavigate()
 
   return(
-    <div className='earthContainer'>
-      <h1 id='title'>Earth</h1>
-        <div className='padButtonContainer'>
-          <img id='earthImage' src={earthImage}></img>
-          <button id='vandyPadButton' onClick={()=>{navigate('/pad/vandy')}}>Vandy</button>
-          <button id='capePadButton' onClick={()=>{navigate('/pad/cape')}}>Cape</button>
-          <button id='starbasePadButton' onClick={()=>{navigate('/pad/starbase')}}>Starbase</button>
-        </div>
-      <div>
-        
-        
-      </div>
-
+    <div className='padButtonContainer'>
+      <img id='earthImage' src={earthImage}></img>
+      <button id='vandyPadButton' onClick={()=>{navigate('/pad/vandy')}}>Vandy</button>
+      <button id='capePadButton' onClick={()=>{navigate('/pad/cape')}}>Cape</button>
+      <button id='starbasePadButton' onClick={()=>{navigate('/pad/starbase')}}>Starbase</button>
     </div>
   )
 }
