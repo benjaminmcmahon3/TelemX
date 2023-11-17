@@ -11,9 +11,10 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
 * Experiment with a "launch replay" feature
 * Introduce an abort controller to prevent unnecessary network requests and rendering the wrong data
 * Switch to a React view model
+* RSS feed in SpaceX, X, tweets
+* Embed launch streams?
 #### Known Bugs
-* Loading icon broken with new app structure
-* Future launches in Timeline component hangs up, takes a while to fetch
+* Launches in Timeline component hangs up, takes a while to fetch
 
 ## Developer
   * Benjamin McMahon

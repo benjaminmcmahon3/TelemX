@@ -12,7 +12,7 @@ export default function Tile({ launch }){
         <h3 className="tileDate">{
           convertDateFromIso(launch.net)
         }</h3>
-        <h3 className="tileTitle">{launch.name}</h3>
+        <h3 className="tileTitle">{launch.mission.name}</h3>
       </div>
       <div className="tileBottom">
         <img className="tileImage" src={launch.image} alt={`Image of the ${launch.name} launch`}></img>
