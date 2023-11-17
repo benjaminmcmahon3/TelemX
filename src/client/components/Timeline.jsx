@@ -21,13 +21,13 @@ export default function Timeline(){
           <h3>Previous Launches</h3>
           <button onClick={()=>{
             navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/past`)
-          }}>View all</button>
+          }}>View all (WIP)</button>
         </div>
         <div className='futureMarker'>
           <h3>Upcoming Launches</h3>
           <button onClick={()=>{
             navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/future`)
-          }}>View all</button>
+          }}>View all (WIP)</button>
       </div>
 
       <div className="timelinePast">

@@ -41,3 +41,16 @@
   border-radius: 5px;
   cursor: pointer;
 }
+#vandyPadButton:hover, #capePadButton:hover, #starbasePadButton:hover{
+  border: 2px solid #000000;
+}
+#vandyPadButton:hover::after, #capePadButton:hover::after, #starbasePadButton:hover::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
