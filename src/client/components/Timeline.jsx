@@ -1,38 +1,44 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Launches from "./Launches"
 import { convertDateFromIso, getCurrentIsoDate } from "../dataHandler"
 import './launchDisplay.css'
+import { useNavigate, useParams } from "react-router-dom"
 
 export default function Timeline(){
 
+  const timelineLimit = 4
+  const navigate = useNavigate()
+  const params = useParams()
+  const [ launchSite, setLaunchSite ] = useState()
+
   useEffect(()=>{
-    
-  },[])
+    if(params.launchSite) setLaunchSite(params.launchSite)
+  },[params])
 
   return(
     <div className="timelineContainer">
       <div className="timelinePast">
-        <div className="pastMarker">
+        {/* <div className="pastMarker">
           <h3>Previous Launches</h3>
           <button onClick={()=>{
-            navigate(`/launches/past`)
+            navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/past`)
           }}>View all</button>
-        </div>
-        <Launches timeFrame={'past'} limit={3} />
+        </div> */}
+        <Launches timeFrame={'past'} limit={timelineLimit} />
       </div>
 
       <div className="timelineIndicator">
-        <h1>{convertDateFromIso(getCurrentIsoDate())}</h1>
+        <h3>Current Time: {convertDateFromIso(getCurrentIsoDate())}</h3>
       </div>
 
-      <div className='futureMarker'>
+      {/* <div className='futureMarker'>
         <h3>Upcoming Launches</h3>
         <button onClick={()=>{
-          navigate(`/launches/future`)
+          navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/future`)
         }}>View all</button>
-      </div>
+      </div> */}
       <div className="timelineFuture">
-        <Launches timeFrame={'future'} limit={3} />
+        <Launches timeFrame={'future'} limit={timelineLimit} />
       </div>
     </div>
   )

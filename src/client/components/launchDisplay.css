@@ -1,64 +1,51 @@
 /* Timeline */
 .timelineContainer {
   display: grid;
-  grid-template-columns: 49vw 2vw 49vw;
-  grid-template-rows: 30vh;
+  grid-template-columns: 1fr 100px 1fr;
+  grid-template-rows: 350px;
   position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0;
-  padding: 10px;
-  width: 100%;
-}
-.timelinePast{
-  position: fixed;
-  left: 0;
-  bottom: 50px;
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0px;
 }
 .timelineIndicator {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 50%);
   color: aliceblue;
   text-align: center;
-  width: 20%;
-}
-.timelineFuture{
-  position: fixed;
-  right: 0;
-  bottom: 50px;
 }
 .launchesContainer{
   display: flex;
-  flex-direction: column-reverse;
+  height: 95%;
+  margin: 0px;
+  padding: 0px;
+}
+.timelinePast, .timelineFuture{
+  height: 100%;
 }
 
 /* Tiles */
 .tileContainer{
-  position: relative;
   padding: 0px;
-  margin: 3px;
-  width: 400px;
-  height: 300px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0px;
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: aliceblue;
-}
-.tileBody{
-  position: relative;
-  overflow: hidden;
   border: 5px solid aliceblue;
   border-radius: 10px;
+}
+.tileTop, .tileBottom{
+  overflow: hidden;
   width: 100%;
-  height: 100%;
+  flex: 1;
 }
-.tileDate{
-  margin: 5px;
-}
-.tileTitle{
-  text-align: center;
-  margin: 5px;
-  background-color: rgba(0, 0, 0, 0.5);
+.tileBottom{
+  position: relative;
 }
 .tileImage{
   position: absolute;
@@ -70,10 +57,6 @@
   z-index: -1;
 }
 .tileButton{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
 }
 
@@ -94,7 +77,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
 .pastMarker, .futureMarker{
   display: flex;
   position: fixed;
