@@ -16,6 +16,7 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
 * Add search filter
 #### Known Bugs
 * Loading icon sometimes "stops" before rendering new data
+* Refreshing page causes desync between button toggles and rendered route
 
 ## Developer
   * Benjamin McMahon
