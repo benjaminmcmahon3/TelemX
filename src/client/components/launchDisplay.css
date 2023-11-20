@@ -47,14 +47,16 @@
   flex: 1;
 }
 .tileTitle, .tileDate, .tilePad{
+  margin: 10px;
+}
+.tileTitle{
+  border-bottom: 1px solid aliceblue;
   margin: 5px;
 }
 .tileTop{
   padding: 0px;
-  border: 1px solid orange;
 }
 .tileBottom{
-  border: 1px solid rgb(142, 142, 252);
   position: relative;
   overflow: hidden;
 }
