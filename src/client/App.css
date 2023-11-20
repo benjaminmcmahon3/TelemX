@@ -2,8 +2,8 @@
   position: relative;
   left: 50%;
   transform: translateX(-50%);
-  width: 350px;
-  height: 350px;
+  width: 50vh;
+  height: 50vh;
 }
 .padButtonContainer>*{
   position: absolute;
@@ -11,6 +11,8 @@
 #earthImage{
   width: 100%;
   height: auto;
+  user-select: none;
+  pointer-events: none;
 }
 #vandyPadButton{
   top: 45%;

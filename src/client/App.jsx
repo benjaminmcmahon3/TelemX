@@ -14,7 +14,7 @@ function App() {
   return (
     <div className='appContainer'>
       <LoadingProvider>
-        <NavBar />
+        {/* <NavBar /> */}
         <Earth />
         <Routes>
           <Route path='/' element={<Timeline />} />

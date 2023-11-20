@@ -14,6 +14,7 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
 * RSS feed in SpaceX, X, tweets
 * Embed launch streams?
 * Add search filter
+* Nest single launch and timeline into a shared div, style that div to dynamically adjust to screen size
 #### Known Bugs
 * Loading icon sometimes "stops" before rendering new data
 * Refreshing page causes desync between button toggles and rendered route

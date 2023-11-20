@@ -18,10 +18,11 @@ export default function Timeline(){
   return(
     <div className="timelineContainer">
         <div className="pastMarker">
-          <h3>Previous Launches</h3>
+
           <button onClick={()=>{
             navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/past`)
           }}>View all (WIP)</button>
+          <h3>Previous Launches</h3>
         </div>
         <div className='futureMarker'>
           <h3>Upcoming Launches</h3>
