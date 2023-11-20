@@ -26,8 +26,10 @@
 }
 
 /* Tiles */
+.tileContainer>*{
+  text-align: center;
+}
 .tileContainer{
-  padding: 5px;
   margin: 5px;
   position: relative;
   width: auto;
@@ -41,24 +43,31 @@
 }
 .tileTop, .tileBottom{
   overflow: hidden;
-  width: 100%;
+  width: auto;
   flex: 1;
 }
+.tileTitle, .tileDate, .tilePad{
+  margin: 5px;
+}
+.tileTop{
+  padding: 0px;
+  border: 1px solid orange;
+}
 .tileBottom{
+  border: 1px solid rgb(142, 142, 252);
   position: relative;
+  overflow: hidden;
 }
 .tileImage{
   position: absolute;
   top: 50%;
   left: 50%;
-  height: auto;
+  height: 100%;
   width: auto;
   transform: translate(-50%, -50%);
-  max-width: 100%;
 }
 .tileButton{
   position: absolute;
-  text-align: center;
   z-index: 2;
 }
 
