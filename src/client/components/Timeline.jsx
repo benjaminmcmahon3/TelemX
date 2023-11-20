@@ -4,7 +4,7 @@ import { convertDateFromIso, getCurrentIsoDate } from "../dataHandler"
 import './launchDisplay.css'
 import { useNavigate, useParams } from "react-router-dom"
 
-export default function Timeline(){
+export default function Timeline({ toggleLaunchDetails }){
 
   const timelineLimit = 4
   const navigate = useNavigate()
@@ -17,7 +17,7 @@ export default function Timeline(){
 
   return(
     <div className="timelineContainer">
-        <div className="pastMarker">
+        {/* <div className="pastMarker">
 
           <button onClick={()=>{
             navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/past`)
@@ -29,10 +29,10 @@ export default function Timeline(){
           <button onClick={()=>{
             navigate(`/${launchSite ? `pad/${launchSite}` : 'launches'}/future`)
           }}>View all (WIP)</button>
-      </div>
+      </div> */}
 
       <div className="timelinePast">
-        <Launches timeFrame={'past'} limit={timelineLimit} />
+        <Launches toggleLaunchDetails={toggleLaunchDetails} timeFrame={'past'} limit={timelineLimit} />
       </div>
 
       <div className="timelineIndicator">
@@ -41,7 +41,7 @@ export default function Timeline(){
       </div>
 
       <div className="timelineFuture">
-        <Launches timeFrame={'future'} limit={timelineLimit} />
+        <Launches toggleLaunchDetails={toggleLaunchDetails} timeFrame={'future'} limit={timelineLimit} />
       </div>
     </div>
   )

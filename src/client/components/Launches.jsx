@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import LoadingContext from "../LoadingContext"
 import './launchDisplay.css'
 
-export default function Launches({ timeFrame, limit }){
+export default function Launches({ timeFrame, limit, toggleLaunchDetails }){
 
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
   const [ launchData, setLaunchData ] = useState([]);
@@ -34,7 +34,7 @@ export default function Launches({ timeFrame, limit }){
         <div className="loadingIcon"></div>
       ):(
         launchData.length > 0 ? (
-          launchData.map((launch)=> <Tile key={launch.id} launch={launch} />)
+          launchData.map((launch)=> <Tile key={launch.id} launch={launch} toggleLaunchDetails={toggleLaunchDetails} />)
         ):(
           <h1>No launches to display</h1>
         ))}

@@ -1,12 +1,9 @@
 import React from "react"
 import { convertDateFromIso } from "../dataHandler"
-import { useNavigate } from "react-router-dom"
 import './launchDisplay.css'
 import { SlCalender, SlLocationPin } from "react-icons/sl";
 
-const Tile = React.memo(({ launch }) => {
-
-  const navigate = useNavigate();
+const Tile = React.memo(({ launch, toggleLaunchDetails }) => {
 
   return(
     <div className='tileContainer'>
@@ -19,9 +16,7 @@ const Tile = React.memo(({ launch }) => {
       </div>
       <div className="tileBottom">
         <img className="tileImage" src={launch.image} alt={`Image of the ${launch.name} launch`}></img>
-        <button className="tileButton" onClick={()=>{
-          navigate(`/${launch.id}`)
-        }}>More Info (WIP)</button>
+        <button className="tileButton" onClick={()=>{toggleLaunchDetails(launch.id)}}>More Info</button>
       </div>
     </div>
   )

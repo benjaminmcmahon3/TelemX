@@ -1,11 +1,10 @@
 import { useEffect, useState, useContext } from "react"
 import { fetchSingleLaunch, convertDateFromIso } from "../dataHandler";
-import { useParams } from "react-router-dom";
 import LoadingContext from "../LoadingContext";
+import "../App.css"
 
-export default function SingleLaunch(){
+export default function SingleLaunch({ launchId, toggleLaunchDetails }){
 
-  let { launchId } = useParams()
   const [ singleLaunchData, setSingleLaunchData ] = useState(null);
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
 
@@ -31,15 +30,20 @@ export default function SingleLaunch(){
   return(
     <>
       {!isLoading && singleLaunchData &&
-        <div className="singleLaunchContainer">
-          <div>
-            <h3>{singleLaunchData.name}</h3>
-            <h3>{convertDateFromIso(singleLaunchData.net)}</h3>
-            <h3 className="singlePad">{singleLaunchData.pad.name}</h3>
-          </div>
-          {singleLaunchData.mission_patches[0] && <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>}
-          {singleLaunchData.image && <img className="singleLaunchImage" src={singleLaunchData.image}></img>}
-      </div>}
+        <div className="screenOverlay">
+          <div className="singleLaunchContainer">
+            <div className="textContent">
+              <button onClick={()=>{toggleLaunchDetails(null)}}>Close</button>
+              <h3>{singleLaunchData.name}</h3>
+              <h3>{convertDateFromIso(singleLaunchData.net)}</h3>
+              <h3 className="singlePad">{singleLaunchData.pad.name}</h3>
+            </div>
+            <div className="visualsContainer">
+              {singleLaunchData.mission_patches[0] && <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>}
+              {singleLaunchData.image && <img className="singleLaunchImage" src={singleLaunchData.image}></img>}
+            </div>
+          </div>  
+        </div>}
     </>
   )
 }

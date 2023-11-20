@@ -58,7 +58,6 @@
 }
 .tileBottom{
   position: relative;
-  overflow: hidden;
 }
 .tileImage{
   position: absolute;
@@ -102,29 +101,6 @@
 }
 .futureMarker{
   right: 0;
-}
-
-.singleLaunchContainer{
-  display: flex;
-  position: fixed;
-  width: 100%;
-  box-sizing: border-box;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  height: 350px;
-}
-.patch{
-  width: 200px;
-  height: 200px;
-}
-.singleLaunchImage{
-  height: auto;
-  width: auto;
-  max-width: 100%;
-}
-.singleLaunchContainer>*{
-  color: aliceblue;
 }
 
 @media screen and (max-width: 800px) {

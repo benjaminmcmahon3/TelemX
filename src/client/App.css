@@ -56,3 +56,117 @@
   background-color: rgba(0, 0, 0, 0.2);
   pointer-events: none;
 }
+
+/* .singleLaunchContainer {
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: aliceblue;
+  width: 80vw;
+  height: 80vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid aliceblue;
+}
+.patch {
+  width: 200px;
+  height: 200px;
+  align-self: start;
+}
+.singleLaunchImage {
+  height: 100%;
+  width: auto;
+  max-width: 50%;
+  order: 2;
+}
+.textContent {
+  width: 50%;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 3;
+  position: relative;
+  border: 1px solid orange;
+}
+.visualsContainer {
+  border: 1px solid red;
+  overflow: hidden;
+} */
+
+.singleLaunchContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: aliceblue;
+  width: 80vw;
+  height: 80vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+  border: 1px solid aliceblue;
+}
+.patch {
+  position: absolute;
+  align-self: start;
+  z-index: 2;
+  width: 200px;
+  height: 200px;
+}
+.singleLaunchImage {
+  height: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.textContent {
+  grid-area: 1 / 1;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+}
+.visualsContainer {
+  position: relative;
+  grid-area: 1 / 2; 
+  align-items: center;
+  justify-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%
+}
+.screenOverlay{
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+  justify-content: center;
+  align-items: center;
+}
