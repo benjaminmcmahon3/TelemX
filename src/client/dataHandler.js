@@ -1,3 +1,4 @@
+// remove "dev" from apiBranch for limited but accurate API data
 const apiBranch = 'lldev'
 const baseUrl = `https://${apiBranch}.thespacedevs.com/2.2.0/launch/`
 const locationReference = {

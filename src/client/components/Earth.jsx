@@ -7,7 +7,7 @@ export default function Earth(){
 
   const navigate = useNavigate();
   const [ activePad, setActivePad ] = useState(null);
-  const padOptions = ['vandy', 'cape', 'starbase']
+  const padOptions = ['vandy', 'cape', 'starbase'];
 
   function handlePadToggle(pad){
     const isPadSelected = activePad === pad;
