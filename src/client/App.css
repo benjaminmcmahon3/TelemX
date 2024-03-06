@@ -124,6 +124,7 @@
   justify-items: center;
   overflow: hidden;
   border: 1px solid aliceblue;
+  pointer-events: none;
 }
 .patch {
   position: absolute;

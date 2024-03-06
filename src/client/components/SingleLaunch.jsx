@@ -30,10 +30,10 @@ export default function SingleLaunch({ launchId, toggleLaunchDetails }){
   return(
     <>
       {!isLoading && singleLaunchData &&
-        <div className="screenOverlay">
-          <div className="singleLaunchContainer">
+        <div className="screenOverlay" onClick={()=>{toggleLaunchDetails(null)}}>
+          <div className="singleLaunchContainer" onClick={(event)=>{event.stopPropagation()}}>
             <div className="textContent">
-              <button onClick={()=>{toggleLaunchDetails(null)}}>Close</button>
+              <button onClick={(event)=>{event.stopPropagation(); toggleLaunchDetails(null)}}>Close</button>
               <h3>{singleLaunchData.name}</h3>
               <h3>{convertDateFromIso(singleLaunchData.net)}</h3>
               <h3 className="singlePad">{singleLaunchData.pad.name}</h3>
