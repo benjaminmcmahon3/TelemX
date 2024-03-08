@@ -13,9 +13,9 @@ function App() {
   const [ showLaunch, setShowLaunch ] = useState(false)
   const [ launchId, setLaunchId ] = useState(null)
 
-  const toggleLaunchDetails = (id)=>{
-    setLaunchId(id)
+  const toggleLaunchDetails = (id) => {
     setShowLaunch(!showLaunch)
+    setLaunchId(id)
     console.log(`showLaunch set to ${showLaunch}`)
   }
 

@@ -38,10 +38,10 @@ export async function fetchSingleLaunch(id){
   }
 }
 
-export async function fetchLaunches(fetchQuery){
+export async function fetchLaunches(fetchQuery, signal){
   try{
     const url = new URL(fetchQuery, baseUrl)
-    const response = await fetch(url);
+    const response = await fetch(url, { signal });
     if(!response.ok){
       throw new Error(`HTTP error, status: ${response.status}`);
     }
@@ -53,7 +53,7 @@ export async function fetchLaunches(fetchQuery){
   }
 }
 
-export async function queryDispatcher(timeFrame, limit, launchSite){
+export async function queryDispatcher(timeFrame, limit, launchSite, signal){
   try{
     // Validates input parameters
     if(!['past', 'future'].includes(timeFrame)){
@@ -70,7 +70,7 @@ export async function queryDispatcher(timeFrame, limit, launchSite){
     if (launchSite){
       fetchQuery += `&pad__location=${locationReference[launchSite]}`;
     }
-    return await fetchLaunches(fetchQuery);
+    return await fetchLaunches(fetchQuery, signal);
   }catch(err){
     throw err;
   }

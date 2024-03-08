@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom"
 
 export default function Timeline({ toggleLaunchDetails }){
 
-  const timelineLimit = 4
+  const timelineLimit = 10
   const navigate = useNavigate()
   const params = useParams()
   const [ launchSite, setLaunchSite ] = useState()
@@ -24,6 +24,7 @@ export default function Timeline({ toggleLaunchDetails }){
           }}>View all (WIP)</button>
           <h3>Previous Launches</h3>
         </div>
+        
         <div className='futureMarker'>
           <h3>Upcoming Launches</h3>
           <button onClick={()=>{

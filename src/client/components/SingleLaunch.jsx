@@ -9,31 +9,31 @@ export default function SingleLaunch({ launchId, toggleLaunchDetails }){
   const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
 
   useEffect(()=>{
-    startLoading
-    async function setLaunchData(){
+    const setLaunchData = async () => {
+      startLoading();
       try{
-        const launchData = await fetchSingleLaunch(launchId)
-        setSingleLaunchData(launchData)
-      }catch(err){
-        console.log('Error', err)
-      }finally{
-        stopLoading()
+        const launchData = await fetchSingleLaunch(launchId);
+        setSingleLaunchData(launchData);
+      } catch (err) {
+        console.error('Error fetching single launch data: ', err);
+      } finally {
+        stopLoading();
       }
     }
-    setLaunchData().then(stopLoading)
-  },[launchId])
+    setLaunchData();
+  },[launchId]);
 
-  if (!singleLaunchData){
+  if (!singleLaunchData) {
     return null
   }
 
   return(
     <>
       {!isLoading && singleLaunchData &&
-        <div className="screenOverlay" onClick={()=>{toggleLaunchDetails(null)}}>
-          <div className="singleLaunchContainer" onClick={(event)=>{event.stopPropagation()}}>
+        <div className="screenOverlay">
+          <div className="singleLaunchContainer">
             <div className="textContent">
-              <button onClick={(event)=>{event.stopPropagation(); toggleLaunchDetails(null)}}>Close</button>
+              <button onClick={() => {toggleLaunchDetails(null)}}>Close</button>
               <h3>{singleLaunchData.name}</h3>
               <h3>{convertDateFromIso(singleLaunchData.net)}</h3>
               <h3 className="singlePad">{singleLaunchData.pad.name}</h3>
