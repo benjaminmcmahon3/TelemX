@@ -6,16 +6,27 @@ import LoadingProvider from './LoadingProvider'
 import Launches from './components/Launches'
 import Timeline from './components/Timeline'
 import { useState } from 'react'
+import LoadingContext from './LoadingContext'
+import { useContext } from 'react'
 
 function App() {
 
+  const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
   const defaultLimit = 10;
   const [ showLaunch, setShowLaunch ] = useState(false)
   const [ launchId, setLaunchId ] = useState(null)
 
-  const toggleLaunchDetails = (id) => {
-    setShowLaunch(!showLaunch)
-    setLaunchId(id)
+  const toggleLaunchDetails = async (id) => {
+    startLoading();
+    try {
+      setShowLaunch(!showLaunch);
+      setLaunchId(id);
+    } catch (err) {
+      console.error('Failed to toggle single launch: ', err);
+    } finally {
+      stopLoading();
+    }
+
     console.log(`showLaunch set to ${showLaunch}`)
   }
 
