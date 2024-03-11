@@ -1,3 +1,7 @@
 .navBarContainer{
   background-color: rgb(180, 180, 180);
 }
+body{
+  background-color: rgb(5, 4, 7);
+  margin: 0;
+}

@@ -1,29 +1,48 @@
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-.loadingIcon {
-  z-index: 5;
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #cd210a;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 2s linear infinite;
-  position: absolute;
-  top: 50%;
+.rocketContainer{
+  position: relative;
   left: 50%;
-  transform: translate(-50%, -50%);
+  top: 50%;
+  transform: translateY(-20%);
 }
-#pastLoadingIcon{
-  position: relative;
-}
-#futureLoadingIcon{
-  position: relative;
-}
+
 #singleLaunchLoadingIcon{
   position: fixed;
-  top: 50vh;
   left: 50vw;
+  top: 50vh;
   transform: translate(-50%, -50%);
+}
+.loadingRocket{
+  animation: 
+    rainbowCycle 1s linear infinite, 
+    vibrate 0.2s linear infinite;
+  width: 100px;
+  height: 100px
+}
+.drift{
+  animation: drift 4s ease-in-out infinite;
+}
+.yaw{
+  animation: yaw 2s ease-in-out infinite;
+}
+@keyframes rainbowCycle {
+  0% { color: red; }
+  14% { color: orange; }
+  28% { color: yellow; }
+  42% { color: green; }
+  57% { color: blue; }
+  71% { color: indigo; }
+  85% { color: violet; }
+  100% { color: red; }
+}
+@keyframes vibrate {
+  0%, 100% { transform: translate(-0.5px, -0.5px); }
+  50% { transform: translate(0.5px, 0.5px); }
+}
+@keyframes yaw {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+}
+@keyframes drift {
+  0%, 100% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
 }

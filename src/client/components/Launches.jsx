@@ -4,6 +4,7 @@ import Tile from "./Tile"
 import { useParams } from "react-router-dom"
 import LoadingContext from "../LoadingContext"
 import '../styles/timeline.css'
+import LoadingIcon from "./LoadingIcon"
 
 export default function Launches({ timeFrame, limit, toggleLaunchDetails }){
 
@@ -36,7 +37,7 @@ export default function Launches({ timeFrame, limit, toggleLaunchDetails }){
   if (localLoading && isLoading || launchData.length === 0) {
     return (
       <div className="launchesContainer">
-        <div id={timeFrame + 'LoadingIcon'} className="loadingIcon"></div>
+        <LoadingIcon timeFrame={timeFrame} />
       </div>
   )}
 

@@ -1,6 +1,6 @@
 import {Routes, Route } from 'react-router-dom'
 import Earth from './components/Earth'
-import './App.css'
+import './styles/app.css'
 import SingleLaunch from './components/SingleLaunch'
 import LoadingProvider from './LoadingProvider'
 import Launches from './components/Launches'

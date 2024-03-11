@@ -3,6 +3,8 @@ import { fetchSingleLaunch, convertDateFromIso } from "../dataHandler";
 import LoadingContext from "../LoadingContext";
 import "../styles/singleLaunch.css"
 import '../styles/loadingIcon.css'
+import { SlClose } from "react-icons/sl";
+import LoadingIcon from "./LoadingIcon";
 
 export default function SingleLaunch({ launchId, toggleLaunchDetails }){
 
@@ -26,7 +28,7 @@ export default function SingleLaunch({ launchId, toggleLaunchDetails }){
   if (isLoading) {
     return (
     <div className="screenOverlay">
-      <div id="singleLaunchLoadingIcon" className="loadingIcon"></div>
+      <LoadingIcon timeFrame={'singleLaunch'} />
     </div>
   )}
 
@@ -35,15 +37,16 @@ if (singleLaunchData) {
       <>
         {!isLoading ?
           <div className="screenOverlay">
+            {singleLaunchData.mission_patches[0] && <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>}
+            <SlClose className='closeButton' onClick={() => {toggleLaunchDetails(null)}} />
             <div className="singleLaunchContainer">
               <div className="textContent">
-                <button onClick={() => {toggleLaunchDetails(null)}}>Close</button>
                 <h3>{singleLaunchData.name}</h3>
                 <h3>{convertDateFromIso(singleLaunchData.net)}</h3>
                 <h3 className="singlePad">{singleLaunchData.pad.name}</h3>
+                <h4>{singleLaunchData.mission.description}</h4>
               </div>
               <div className="visualsContainer">
-                {singleLaunchData.mission_patches[0] && <img className="patch" src={singleLaunchData.mission_patches[0].image_url}></img>}
                 {singleLaunchData.image && <img className="singleLaunchImage" src={singleLaunchData.image}></img>}
               </div>
             </div>  
