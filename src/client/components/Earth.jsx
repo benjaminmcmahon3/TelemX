@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import earthImage from '../assets/Earth.png'
-import '../App.css'
+import '../styles/earth.css'
 import { useState } from 'react'
 
 export default function Earth(){

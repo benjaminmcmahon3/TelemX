@@ -1,9 +1,13 @@
 import React from "react"
+import { useContext } from 'react'
 import { convertDateFromIso } from "../dataHandler"
-import './launchDisplay.css'
+import '../styles/tile.css'
 import { SlCalender, SlLocationPin } from "react-icons/sl";
+import LoadingContext from "../LoadingContext";
 
 const Tile = React.memo(({ launch, toggleLaunchDetails }) => {
+
+  const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
 
   return(
     <div className='tileContainer'>
@@ -16,7 +20,7 @@ const Tile = React.memo(({ launch, toggleLaunchDetails }) => {
       </div>
       <div className="tileBottom">
         <img className="tileImage" src={launch.image} alt={`Image of the ${launch.name} launch`}></img>
-        <button className="tileButton" onClick={()=>{toggleLaunchDetails(launch.id)}}>More Info</button>
+        <button className="tileButton" onClick={()=>{startLoading(); toggleLaunchDetails(launch.id)}}>More Info</button>
       </div>
     </div>
   )

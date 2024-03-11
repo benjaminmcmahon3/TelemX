@@ -7,17 +7,14 @@ TelemX is a visual interface and dashboard to view past and future SpaceX launch
   * Page for user to browse detailed vehicle information
 * Fetch and store larger sums of API data
   * Helps alleviate requests/hour limit of main API
-* Make custom loading icon (rocket?, fairing sep?)
 * Experiment with a "launch replay" feature
-* Introduce an abort controller to prevent unnecessary network requests and rendering the wrong data
 * Switch to a React view model
 * RSS feed in SpaceX, X, tweets
 * Embed launch streams?
 * Add search filter
 * Nest single launch and timeline into a shared div, style that div to dynamically adjust to screen size
 #### Known Bugs
-* Loading icon sometimes "stops" before rendering new data
-* Refreshing page causes desync between button toggles and rendered route
+* Nothing major at the moment
 
 ## Developer
   * Benjamin McMahon

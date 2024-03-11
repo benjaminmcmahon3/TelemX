@@ -1,21 +1,32 @@
 import {Routes, Route } from 'react-router-dom'
 import Earth from './components/Earth'
-import './App.css'
+import './styles/app.css'
 import SingleLaunch from './components/SingleLaunch'
 import LoadingProvider from './LoadingProvider'
 import Launches from './components/Launches'
 import Timeline from './components/Timeline'
 import { useState } from 'react'
+import LoadingContext from './LoadingContext'
+import { useContext } from 'react'
 
 function App() {
 
+  const { startLoading, stopLoading, isLoading } = useContext(LoadingContext)
   const defaultLimit = 10;
   const [ showLaunch, setShowLaunch ] = useState(false)
   const [ launchId, setLaunchId ] = useState(null)
 
-  const toggleLaunchDetails = (id)=>{
-    setLaunchId(id)
-    setShowLaunch(!showLaunch)
+  const toggleLaunchDetails = async (id) => {
+    startLoading();
+    try {
+      setShowLaunch(!showLaunch);
+      setLaunchId(id);
+    } catch (err) {
+      console.error('Failed to toggle single launch: ', err);
+    } finally {
+      stopLoading();
+    }
+
     console.log(`showLaunch set to ${showLaunch}`)
   }
 
