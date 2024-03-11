@@ -3,7 +3,7 @@ import { queryDispatcher } from "../dataHandler"
 import Tile from "./Tile"
 import { useParams } from "react-router-dom"
 import LoadingContext from "../LoadingContext"
-import './launchDisplay.css'
+import '../styles/timeline.css'
 
 export default function Launches({ timeFrame, limit, toggleLaunchDetails }){
 
@@ -34,13 +34,14 @@ export default function Launches({ timeFrame, limit, toggleLaunchDetails }){
   },[timeFrame, limit, launchSite])
 
   if (localLoading && isLoading || launchData.length === 0) {
-    return <div className="loadingIcon"></div>;
-  }
+    return (
+      <div className="launchesContainer">
+        <div id={timeFrame + 'LoadingIcon'} className="loadingIcon"></div>
+      </div>
+  )}
 
   return(
-    <div className="launchesContainer" style={{ 
-        flexDirection: timeFrame === 'past' ? 'row-reverse' : 'row'
-      }}>
+    <div id={timeFrame} className="launchesContainer">
       {launchData.map((launch)=> <Tile key={launch.id} launch={launch} toggleLaunchDetails={toggleLaunchDetails} />)}
     </div>
   )

@@ -1,7 +1,7 @@
 import React from "react"
 import { useContext } from 'react'
 import { convertDateFromIso } from "../dataHandler"
-import './launchDisplay.css'
+import '../styles/tile.css'
 import { SlCalender, SlLocationPin } from "react-icons/sl";
 import LoadingContext from "../LoadingContext";
 

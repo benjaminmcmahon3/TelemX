@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import Launches from "./Launches"
 import { convertDateFromIso, getCurrentIsoDate } from "../dataHandler"
-import './launchDisplay.css'
+import '../styles/timeline.css'
 import { useNavigate, useParams } from "react-router-dom"
 
 export default function Timeline({ toggleLaunchDetails }){

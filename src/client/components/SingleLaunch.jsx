@@ -1,7 +1,8 @@
 import { useEffect, useState, useContext } from "react"
 import { fetchSingleLaunch, convertDateFromIso } from "../dataHandler";
 import LoadingContext from "../LoadingContext";
-import "../App.css"
+import "../styles/singleLaunch.css"
+import '../styles/loadingIcon.css'
 
 export default function SingleLaunch({ launchId, toggleLaunchDetails }){
 
@@ -23,8 +24,11 @@ export default function SingleLaunch({ launchId, toggleLaunchDetails }){
   },[launchId]);
 
   if (isLoading) {
-    return <div className="loadingIcon"></div>
-  }
+    return (
+    <div className="screenOverlay">
+      <div id="singleLaunchLoadingIcon" className="loadingIcon"></div>
+    </div>
+  )}
 
 if (singleLaunchData) {
   return(
