@@ -15,7 +15,7 @@
 .tileTitle{
   grid-area: 1 / 1 / 2 / 3;
   border-bottom: 1px solid aliceblue;
-  margin: 0;
+  margin: 5px;
   text-align: center;
 }
 .tileImage{
@@ -31,6 +31,11 @@
 }
 .tileDate{
   margin: 0;
+  padding: 0;
+}
+.tilePad{
+  margin: 0;
+  padding: 0;
 }
 .tileDetails{
   grid-area: 2 / 1 / 2 / 1;

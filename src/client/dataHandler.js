@@ -7,6 +7,11 @@ const locationReference = {
   'starbase': 143
 };
   
+export function getCurrentTime(){
+    let isoDate = getCurrentIsoDate()
+    return(convertDateFromIso(isoDate))
+}
+
 export function getCurrentIsoDate(){
   let date = new Date()
   return(date.toISOString())
@@ -20,7 +25,8 @@ export function convertDateFromIso(isoDate){
     month: 'long', 
     day: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
+    minute: '2-digit',
+    second: '2-digit'
   }))
 }
 
