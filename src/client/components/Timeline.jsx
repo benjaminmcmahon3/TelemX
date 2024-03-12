@@ -33,6 +33,7 @@ export default function Timeline({ toggleLaunchDetails }){
       </div> */}
 
       <div className="timelinePast">
+        <h3 className="timeTitle">Recent</h3>
         <Launches toggleLaunchDetails={toggleLaunchDetails} timeFrame={'past'} limit={timelineLimit} />
       </div>
 
@@ -42,6 +43,7 @@ export default function Timeline({ toggleLaunchDetails }){
       </div>
 
       <div className="timelineFuture">
+        <h3 className="timeTitle">Upcoming</h3>
         <Launches toggleLaunchDetails={toggleLaunchDetails} timeFrame={'future'} limit={timelineLimit} />
       </div>
     </div>

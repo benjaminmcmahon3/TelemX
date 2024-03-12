@@ -1,39 +1,45 @@
 .timelineContainer {
   display: grid;
   grid-template-columns: 1fr 100px 1fr;
-  grid-template-rows: 45vh;
+  grid-template-rows: 55vh;
   position: fixed;
-  left: calc(50% - 5px);
+  left: 50%;
   transform: translateX(-50%);
   bottom: 5px;
   width: calc(100vw - 10px);
   padding: 0px;
-  margin: 5px;
+  margin: 0, auto;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 .timelineIndicator {
   grid-column: 2;
   color: aliceblue;
   text-align: center;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+  max-width: 100px;
+  overflow: hidden;
+  word-wrap: break-word;
 }
 .launchesContainer{
   display: flex;
+  flex-direction: column !important;
+  overflow: scroll;
   height: 100%;
-  overflow: hidden;
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-  overflow-x: scroll;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-@media screen and (max-width: 800px) {
-  .launchesContainer{
-    flex-direction: column !important;
-    overflow: scroll;
-  }
-}
-#past {
+#pastLaunches{
+  grid-column: 1;
   flex-direction: row-reverse;
 }
-#future {
+#futureLaunches{
+  grid-column: 3;
   flex-direction: row;
 }
 .pastMarker, .futureMarker{
@@ -47,4 +53,11 @@
 }
 .futureMarker{
   right: 0;
+}
+.timeTitle{
+  color: aliceblue;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid aliceblue;
 }
