@@ -17,9 +17,9 @@ const Tile = React.memo(({ launch, toggleLaunchDetails }) => {
           convertDateFromIso(launch.net)
         }</h4>
         <h4 className="tilePad"><SlLocationPin /> {launch.pad.name}</h4>
-        <button className="tileButton" onClick={()=>{startLoading(); toggleLaunchDetails(launch.id)}}>More Info</button>
       </div>
-        <img className="tileImage" src={launch.image} alt={`Image of the ${launch.name} launch`}></img>
+      <button className="tileButton" onClick={()=>{startLoading(); toggleLaunchDetails(launch.id)}}>More Info</button>
+      <img className="tileImage" src={launch.image} alt={`Image of the ${launch.name} launch`}></img>
     </div>
   )
 })
