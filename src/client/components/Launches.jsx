@@ -42,7 +42,7 @@ export default function Launches({ timeFrame, limit, toggleLaunchDetails }){
   )}
 
   return(
-    <div id={timeFrame} className="launchesContainer">
+    <div id={timeFrame + 'Launches'} className="launchesContainer">
       {launchData.map((launch)=> <Tile key={launch.id} launch={launch} toggleLaunchDetails={toggleLaunchDetails} />)}
     </div>
   )

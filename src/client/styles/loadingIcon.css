@@ -1,10 +1,9 @@
 .rocketContainer{
   position: relative;
-  left: 50%;
+  left: 85%;
   top: 50%;
-  transform: translateY(-20%);
+  transform: translate(-50%, -50%);
 }
-
 #singleLaunchLoadingIcon{
   position: fixed;
   left: 50vw;
